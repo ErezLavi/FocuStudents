@@ -1,0 +1,23 @@
+.button {
+  height: 8rem;
+  width: 12.5rem;
+  font: bolder;
+  font-size: 180%;
+  background-color: var(--items-color);
+  border: 3px dashed var(--border-color);
+  border-radius: 20%;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .button {
+    width: 15rem;
+  }
+}
+@media (max-width: 576px) {
+  .button {
+    width: 18rem;
+  }
+}
+
+

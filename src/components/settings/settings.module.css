@@ -1,0 +1,41 @@
+
+.slider{
+    margin-top: 2rem;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.slider label{
+    font-size: 150%;
+    font-weight: 500;
+}
+.sliderRed{
+    height: 2rem;
+    width: 20rem;
+    margin-bottom: 3rem;
+    border: 2px solid var(--focusSetting-color);
+    border-radius: 2rem;
+}
+
+.sliderRedthumb{
+    background-color: var(--focusSetting-color);
+    cursor:pointer;
+    width:2rem;
+    height: 2rem;
+    border-radius: 20px;
+}
+
+.sliderGreen{
+    height: 2rem;
+    width: 20rem;
+    border: 2px solid var(--breakSetting-color);
+    border-radius: 20px;
+}
+.sliderGreenThumb{
+    background-color:var(--breakSetting-color);
+    cursor:pointer;
+    width:2rem;
+    height: 2rem;
+    border-radius: 20px;
+}

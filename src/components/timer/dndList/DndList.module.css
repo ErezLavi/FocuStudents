@@ -1,0 +1,38 @@
+.item {
+  width: 20rem;
+  border-radius: 5%;
+  border: 2px solid var(--time-border-color);
+  cursor: pointer;
+}
+.item div {
+  justify-content: space-between;
+}
+.item div div {
+  min-width: 3.5rem;
+  min-height: 5rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  border-radius: 5%;
+  user-select: none;
+  box-shadow: 0 3px #999;
+}
+.item div div:active {
+  box-shadow: 2px 2px #666;
+  transform: translateY(1px);
+}
+.itemDragging {
+  box-shadow: var(--mantine-shadow-sm);
+}
+.checkBox {
+  margin: 1rem;
+  transform: scale(2);
+  accent-color: #252b48;
+  cursor: pointer;
+}
+
+.dragHandle {
+  display: flex;
+  font-weight: 700;
+  color: var(--text-color);
+  cursor: pointer;
+}

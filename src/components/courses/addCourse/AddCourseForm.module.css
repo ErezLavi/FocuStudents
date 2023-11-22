@@ -1,0 +1,91 @@
+
+.form {
+  display: flex;
+  font-family: 'roboto', sans-serif;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0.5rem 1rem 0.5rem;
+  max-width: 11.8rem;
+  max-height: 19rem;
+  border-radius: 20%;
+  background-color: var(--items-color);
+  border: 3px solid var(--border-color);
+}
+
+.form label {
+  display: block;
+  font-weight: bold;
+  font-size: 110%;
+  margin: 0.7rem 0;
+}
+
+.form input {
+  background: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid black;
+  font-size: 110%;
+  max-width: 10rem;
+}
+
+.form div button {
+  margin: 1rem;
+  display: flex;
+  justify-content: space-around;
+  background-color: transparent;
+  font-size: 110%;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.form div button:hover {
+  transform: scale(1.1);
+}
+
+.colordot {
+  display: grid;
+  grid-template-columns: repeat(3, 3rem);
+  margin: 0;
+}
+
+.colordot div {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  margin: 0.125rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  user-select: none;
+}
+
+.colordot div:hover {
+  transform: scale(1.1);
+}
+
+.colordot div.active{
+  text-align: center;
+  font-size: larger;
+  color: var(--items-color);
+}
+
+@media (max-width: 768px) {
+  .form {
+    max-width: 14rem;
+  }
+}
+@media (max-width: 576px) {
+  .form {
+    max-width: 17rem;
+    max-height: 21rem;
+  }
+  .form input{
+    max-width: 16rem;
+    font-size: 110%;
+  }
+  .colordot{
+    grid-template-columns: repeat(3, 3.5rem);
+    grid-template-rows: repeat(3, 3rem);
+  }
+}

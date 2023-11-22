@@ -1,0 +1,68 @@
+.section {
+  width: 11.25rem;
+  min-height: 5rem;
+  margin-top: 0.5rem;
+  padding: 0.625rem;
+  border-radius: 20%;
+  color: #000;
+  background-color: var(--items-color);
+  font-weight: 700; 
+  border: 1px solid var(--border-color);
+}
+
+.section div div {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+}
+
+.checkBox{
+  transform: scale(1.5);
+  accent-color: #252b48;
+  cursor: pointer;
+}
+.iconEdit{
+  cursor: pointer;
+}
+.trash:hover{
+  color: #9A3B3B;
+  cursor: pointer;
+}
+
+.section form div button{
+  background-color: transparent;
+  font-size: 100%;
+  font-weight: bold;
+  margin: 0.8rem;
+}
+
+.section form input{
+  display: block;
+  max-width: 10rem;
+  margin: 0.5rem ;
+  outline: none;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #000;
+  font-size: 110%;
+}
+
+@media (max-width: 768px) {
+  .section {
+    width: 13.7rem;
+  }
+  .section form input{
+    max-width: 12rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .section {
+    width: 16.7rem;
+  }
+  .section form input{
+    max-width: 16rem;
+  }
+}
+
+

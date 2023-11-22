@@ -1,0 +1,23 @@
+:root{
+  --main-color: #F4F2DE;
+  --items-color: #f4e0b9;
+  --border-color: #ad8989;
+  --focusSetting-color: #860A35;
+  --breakSetting-color: #186F65;
+}
+.main {
+  background-color: var( --main-color);
+  min-height: 100vh;
+  padding: 1rem 0;
+}
+
+@media (max-width: 576px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 120%;
+  }
+}
+
+
