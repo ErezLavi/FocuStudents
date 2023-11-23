@@ -1,6 +1,5 @@
 import * as React from "react";
 import classes from "./TimerLayout.module.css";
-import { useAppSelector } from "../../../store/hooks";
 
 type LayoutProps = {
   children: React.ReactNode;

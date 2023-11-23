@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { timerSlice } from "./timer-slice";
-import { coursesSlice, coursesActions } from "./courses-slice";
+import { coursesSlice } from "./courses-slice";
 import { tasksSlice } from "./tasks-slice";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
