@@ -32,7 +32,7 @@ const MainNavigation: React.FC = () => {
   const items = navButtons.map((val) => (
     <li key={val.id} onClick={() => handleItemClick(val.id)}>
       <NavLink
-        to={"/" + `${val.text}`}
+        to={`/${val.text}`}
         className={activeId === val.id ? `${classes.active}` : ""}
       >
         {val.icon}
