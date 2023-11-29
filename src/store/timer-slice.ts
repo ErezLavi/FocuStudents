@@ -25,11 +25,12 @@ const timerSlice = createSlice({
     },
     decrement: (state, action: PayloadAction<{ secondsLeft: number }>) => {
       const { secondsLeft } = action.payload;
+      const newSecondsLeft = Math.max(0, secondsLeft - 1);
       return {
         ...state,
         entity: {
           ...state.entity,
-          secondsLeft: secondsLeft - 1,
+          secondsLeft: newSecondsLeft,
         },
       };
     },
@@ -66,12 +67,6 @@ const timerSlice = createSlice({
           breakTime,
           secondsLeft: newSecondsLeft,
         },
-      };
-    },
-    resetTimer: (state) => {
-      return {
-        ...state,
-        entity: initialTimer,
       };
     },
   },
