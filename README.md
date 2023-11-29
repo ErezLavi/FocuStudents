@@ -2,8 +2,9 @@
 https://focustudents-todo.netlify.app
 
 React pomodoro-to-do web app made for students
-
-
+![desktopImg](https://raw.githubusercontent.com/ErezLavi/FocuStudents/master/focustudents%20media/Screenshot%202023-11-29%20233244.png)
+![mobiledndGif](https://github.com/ErezLavi/FocuStudents/blob/master/focustudents%20media/dndFocuStudents.gif)
+![mobileSettings](https://github.com/ErezLavi/FocuStudents/blob/master/focustudents%20media/mobile-settings.png)
 ## Description
 
 Designed with students in mind, this feature-packed Pomodoro-to-do app seamlessly blends task management, focused study sessions, and customizable settings to elevate your productivity game.
@@ -14,7 +15,7 @@ Designed with students in mind, this feature-packed Pomodoro-to-do app seamlessl
 Effortlessly organize your assignments, projects, and study sessions in one central hub.
 The intuitive Tasks Page allows you to add, edit, and mark as done tasks.
 
-🍅. Timer:
+🍅 Timer:
 Utilize the Pomodoro technique to boost your concentration and enhance productivity.
 Set customizable timers for work and break intervals, creating an optimal study rhythm tailored to your needs.
 Experience the convenience of a visual task stack.
@@ -22,12 +23,12 @@ Easily prioritize and rearrange your tasks using the drag-and-drop feature, ensu
 
 ## Created using:
 
-☑️ React js\n
-☑️ TypeScript\n
-☑️ CSS and mantine library(dnd and Tabler icons)\n
-☑️ Redux Toolkit\n
-☑️ Redux persist (local storage)\n  
-☑️ React Router DOM\n
+☑️ React js\
+☑️ TypeScript\
+☑️ CSS and mantine library(dnd and Tabler icons)\
+☑️ Redux Toolkit\
+☑️ Redux persist (local storage)\  
+☑️ React Router DOM\
 ☑️ Figma (prototyping)
 
 ## How to Get Started:
