@@ -53,10 +53,10 @@ const NewTaskForm: React.FC<{
       </div>
       <input type="text" id="description" ref={taskDescriptionInputRef}></input>
       <div>
-        <button type="submit">Add</button>
         <button type="button" onClick={props.onCancel}>
           Close
         </button>
+        <button type="submit">Add</button>
       </div>
     </form>
   );
