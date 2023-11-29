@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../../store/hooks";
 import { timerActions } from "../../../store/timer-slice";
 import { startTimer } from "./timerUtils";
+import { clearInterval } from "worker-timers";
 import buttonclickSound from "../../../sound/startClickButton.mp3";
 
 const TimerForm = () => {
@@ -53,8 +54,11 @@ const TimerForm = () => {
     return timerState.timerMode === mode ? "#FFE3BB" : "#F4F2DE";
   };
 
-  const minutes = Math.floor(timerState.secondsLeft / 60);
-  let seconds = timerState.secondsLeft % 60;
+  const formatTime = (time: number): string => {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+    return `${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
+  };
 
   return (
     <form className={classes.form}>
@@ -73,7 +77,7 @@ const TimerForm = () => {
         </button>
       </div>
       <label className={classes.clock}>
-        {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+        {formatTime(timerState.secondsLeft)}
       </label>
       <button className={classes.startButtonStyle} onClick={startButtonHandler}>
         {timerState.isPaused ? "Start" : "Pause"}
