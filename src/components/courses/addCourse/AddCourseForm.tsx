@@ -65,10 +65,10 @@ const AddCourseForm: React.FC<{
         ))}
       </div>
       <div>
-        <button type="submit">Add</button>
         <button type="button" onClick={props.onCancel}>
           Close
         </button>
+        <button type="submit">Add</button>
       </div>
     </form>
   );
