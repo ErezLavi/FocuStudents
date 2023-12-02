@@ -2,6 +2,7 @@ import classes from "./TimerForm.module.css";
 import TaskLabel from "./TaskLabel";
 import React, { useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../../store/hooks";
+import { IconChevronRightPipe } from "@tabler/icons-react";
 import { timerActions } from "../../../store/timer-slice";
 import { startTimer } from "./timerUtils";
 import { clearInterval } from "worker-timers";
@@ -31,7 +32,7 @@ const TimerForm = () => {
 
   const modesButtonHandler = (
     mode: string,
-    event: React.MouseEvent<HTMLButtonElement>
+    event: React.MouseEvent<Element, MouseEvent>
   ) => {
     event.preventDefault();
     if (timerState.timerMode === mode) {
@@ -48,6 +49,12 @@ const TimerForm = () => {
         isPaused: true,
       })
     );
+  };
+
+  const iconClickHandler = (event: React.MouseEvent<Element, MouseEvent>) => {
+    event.preventDefault();
+    const nextMode = timerState.timerMode === "focus" ? "break" : "focus";
+    modesButtonHandler(nextMode, event);
   };
 
   const activeModeStyle = (mode: string): string => {
@@ -79,9 +86,21 @@ const TimerForm = () => {
       <label className={classes.clock}>
         {formatTime(timerState.secondsLeft)}
       </label>
-      <button className={classes.startButtonStyle} onClick={startButtonHandler}>
-        {timerState.isPaused ? "Start" : "Pause"}
-      </button>
+      <section>
+        <button
+          className={classes.startButtonStyle}
+          onClick={startButtonHandler}
+        >
+          {timerState.isPaused ? "Start" : "Pause"}
+        </button>
+        {!timerState.isPaused && (
+          <IconChevronRightPipe
+            size={45}
+            className={classes.switchButton}
+            onClick={(event) => iconClickHandler(event)}
+          />
+        )}
+      </section>
       <TaskLabel tasksArr={tasksArr} />
     </form>
   );
