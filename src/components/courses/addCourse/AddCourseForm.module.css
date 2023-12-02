@@ -81,8 +81,11 @@
     max-height: 21rem;
   }
   .form input{
-    max-width: 16rem;
+    max-width: 15rem;
     font-size: 110%;
+  }
+  .form div button{
+    margin: 0 1rem;
   }
   .colordot{
     grid-template-columns: repeat(3, 3.5rem);
