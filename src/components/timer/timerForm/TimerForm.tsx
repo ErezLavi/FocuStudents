@@ -51,8 +51,7 @@ const TimerForm = () => {
     );
   };
 
-  const iconClickHandler = (event: React.MouseEvent<Element, MouseEvent>) => {
-    event.preventDefault();
+  const skipHandler = (event: React.MouseEvent<Element, MouseEvent>) => {
     const nextMode = timerState.timerMode === "focus" ? "break" : "focus";
     modesButtonHandler(nextMode, event);
   };
@@ -97,7 +96,7 @@ const TimerForm = () => {
           <IconChevronRightPipe
             size={45}
             className={classes.switchButton}
-            onClick={(event) => iconClickHandler(event)}
+            onClick={(event) => skipHandler(event)}
           />
         )}
       </section>
