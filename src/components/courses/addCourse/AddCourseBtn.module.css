@@ -1,8 +1,8 @@
 .button {
-  height: 8rem;
+  height: 6rem;
   width: 12.5rem;
   font: bolder;
-  font-size: 180%;
+  font-size: 150%;
   background-color: var(--items-color);
   border: 3px dashed var(--border-color);
   border-radius: 20%;
