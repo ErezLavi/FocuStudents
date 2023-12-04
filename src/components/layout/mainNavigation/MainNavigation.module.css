@@ -6,9 +6,8 @@
 
 .header {
   display: flex;
-  font-family: 'roboto', sans-serif;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   background-color: var(--header-color);
 }
 .header div {
@@ -29,21 +28,19 @@ section {
 
 .nav ul {
   display: flex;
-  margin-right: 6rem;
+  margin-right: 4rem;
 }
 
 .nav li {
   display: flex;
-  margin: 0 3rem;
-  height: 1.25rem;
-  max-width: 4rem;
+  margin: 0 2rem;
   text-align: center;
   font-family: 'roboto', sans-serif;
-  font-weight: bolder;
   font-size: 1.5rem;
 }
 
 .nav a {
+  display: flex;
   text-decoration: none;
   color: var(--icons-color);
 }
