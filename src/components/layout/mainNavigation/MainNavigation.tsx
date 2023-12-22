@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import classes from "./MainNavigation.module.css";
 import { NavLink } from "react-router-dom";
 import { Fade as Hamburger } from "hamburger-react";
-import { IconListCheck, IconAlarm, IconSettings } from "@tabler/icons-react";
+import {
+  IconListCheck,
+  IconAlarm,
+  IconSettings,
+  IconChartPieFilled,
+} from "@tabler/icons-react";
 
 const MainNavigation: React.FC = () => {
   const [activeId, setActiveId] = useState<number | undefined>(1);
@@ -14,7 +19,8 @@ const MainNavigation: React.FC = () => {
   const navButtons = [
     { id: 1, text: "Tasks", icon: <IconListCheck /> },
     { id: 2, text: "Timer", icon: <IconAlarm /> },
-    { id: 3, text: "Settings", icon: <IconSettings /> },
+    { id: 3, text: "Data", icon: <IconChartPieFilled /> },
+    { id: 4, text: "Settings", icon: <IconSettings /> },
   ];
 
   useEffect(() => {

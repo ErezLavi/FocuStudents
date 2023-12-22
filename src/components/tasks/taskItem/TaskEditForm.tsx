@@ -53,7 +53,6 @@ const TaskEditForm: React.FC<TaskEditFormProps> = ({
           type="button"
           onClick={() => {
             setIsEdit(false);
-            // Use task.name here instead of editedTask.name
             setEditedTaskName(task.name);
             setErrorMessage("");
           }}

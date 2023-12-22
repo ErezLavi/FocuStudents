@@ -4,9 +4,9 @@ import Timer from "../models/Timer";
 const initialTimer: Timer = {
   isPaused: true,
   timerMode: "focus",
-  secondsLeft: 50 * 60,
-  focusTime: 50,
-  breakTime: 10,
+  secondsLeft: 30 * 60,
+  focusTime: 30,
+  breakTime: 5,
 };
 
 const initialTimerState = { entity: initialTimer };
@@ -73,6 +73,5 @@ const timerSlice = createSlice({
 });
 
 export { timerSlice };
-
 export const timerActions = timerSlice.actions;
 export default timerSlice.reducer;

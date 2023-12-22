@@ -1,5 +1,5 @@
 import ReactSlider from "react-slider";
-import classes from "./settings.module.css";
+import classes from "./Settings.module.css";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { timerActions } from "../../store/timer-slice";
 

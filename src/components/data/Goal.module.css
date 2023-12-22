@@ -1,0 +1,68 @@
+.div {
+  display: flex;
+  width: 16rem;
+  height: 10rem;
+  flex-direction: column;
+  align-items: center;
+  border: 4px double var(--time-border-color);
+  border-radius: 15%;
+  padding: 1.5rem 2rem;
+}
+.div section {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  font-weight: 550;
+  font-family: "roboto", sans-serif;
+  display: flex;
+}
+
+.div header {
+  display: flex;
+  justify-content: space-between;
+}
+.checkIcon {
+  margin-left: 2rem;
+  height: 2rem;
+  width: 2rem;
+  color: var(--text-color);
+}
+
+.div div {
+  margin: 1rem;
+  display: flex;
+  align-items: last baseline;
+}
+.div div input {
+  background-color: transparent;
+  border-radius: 15%;
+  margin: 0.6rem 0.2rem;
+  font-size: 1.1rem;
+  border: 2px solid var(--text-color);
+  width: 2.3rem;
+  height: 1.5rem;
+}
+.div button {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  color: var(--text-color);
+  background-color: var(--items-color);
+  font-size: 1rem;
+  border: 1.5px solid var(--text-color);
+  border-radius: 10%;
+  cursor: pointer;
+}
+.div button:hover{
+  border: 1.5px solid var(--time-border-color);
+}
+
+.ProgressBar {
+  margin-top: 1.2rem;
+  width: 15rem;
+  height: 1rem;
+}
+
+.div div section {
+  font-size: 1rem;
+  margin: 0 0.3rem;
+}

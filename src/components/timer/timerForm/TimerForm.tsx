@@ -12,9 +12,10 @@ const TimerForm = () => {
   const dispatch = useAppDispatch();
   const tasksArr = useAppSelector((state) => state.tasks.tasks);
   const timerState = useAppSelector((state) => state.timer.entity);
+  const goalState = useAppSelector((state) => state.goal.entity);
 
   useEffect(() => {
-    const interval = startTimer(dispatch, timerState);
+    const interval = startTimer(dispatch, timerState, goalState );
     return () => clearInterval(interval);
   }, [dispatch, timerState]);
 

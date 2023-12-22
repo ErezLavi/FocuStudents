@@ -1,6 +1,7 @@
 import TasksLayout from "../components/layout/tasksLayout/TasksLayout";
 import Settings from "../components/settings/Settings";
-const AllTasks = () => {
+
+const SettingsPage = () => {
   return (
     <TasksLayout>
         <Settings />
@@ -8,4 +9,4 @@ const AllTasks = () => {
   );
 };
 
-export default AllTasks;
+export default SettingsPage;

@@ -34,7 +34,6 @@ section {
 .nav li {
   display: flex;
   margin: 0 2rem;
-  text-align: center;
   font-family: 'roboto', sans-serif;
   font-size: 1.5rem;
 }
@@ -59,7 +58,6 @@ section {
 .mobileHeader section {
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 .mobileHeader div{
@@ -71,11 +69,12 @@ section {
   display: flex;
   justify-content: center;
   text-align: center;
-  font-size: 170%;
 }
 .mobileNav li {
   display: flex;
-  margin: 0 1rem;
+  justify-content: center;
+  margin: 0 0.5rem;
+  font-size: 1.2rem;
 }
 .mobileNav a {
   text-decoration: none;

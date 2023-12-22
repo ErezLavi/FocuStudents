@@ -2,6 +2,7 @@ import "./App.css";
 import { Routes, Route, Navigate} from "react-router-dom";
 import TasksPage from "./pages/TasksPage";
 import TimerPage from "./pages/TimerPage";
+import DataPage from './pages/DataPage';
 import SettingsPage from "./pages/SettingsPage";
 import Layout from "./components/layout/Layout";
 
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/Tasks" element={<TasksPage />}></Route>
           <Route path="/Timer" element={<TimerPage />}></Route>
+          <Route path="/Data" element={<DataPage />}></Route>
           <Route path="/Settings" element={<SettingsPage />}></Route>
           <Route path="*" element={<Navigate to="/Tasks" replace />} />
         </Routes>
