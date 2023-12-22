@@ -14,7 +14,7 @@ const Goal = () => {
     if (goalState.numOfCompletedIntervals === goalState.numOfIntervals && goalState.isGoal) {
       dispatch(goalActions.updateGoal({ ...goalState, isCompleted: true }));
     }
-  }, [goalState.numOfCompletedIntervals, dispatch]);
+  }, []);
 
   const myGoalHandler = (event: React.FormEvent) => {
     event.preventDefault();
