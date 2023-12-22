@@ -15,9 +15,9 @@ const TimerForm = () => {
   const goalState = useAppSelector((state) => state.goal.entity);
 
   useEffect(() => {
-    const interval = startTimer(dispatch, timerState, goalState );
+    const interval = startTimer(dispatch, timerState, goalState);
     return () => clearInterval(interval);
-  }, [dispatch, timerState]);
+  }, [dispatch, timerState, goalState]);
 
   const startButtonHandler = (event: React.FormEvent) => {
     event.preventDefault();
