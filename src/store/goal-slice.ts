@@ -22,6 +22,21 @@ const goalSlice = createSlice({
         },
       };
     },
+    setGoalCompleted: (state, action: PayloadAction<Goal>) => {
+      const { isCompleted, isGoal, numOfIntervals, numOfCompletedIntervals } =
+        action.payload;
+      if (isGoal && numOfCompletedIntervals === numOfIntervals) {
+        return {
+          ...state,
+          entity: {
+            ...state.entity,
+            isCompleted: isCompleted,
+          },
+        };
+      } else {
+        return state;
+      }
+    },
   },
 });
 

@@ -11,10 +11,12 @@ const Goal = () => {
   const [inputValue, setInputValue] = useState<string>("1");
 
   useEffect(() => {
-    if (goalState.numOfCompletedIntervals === goalState.numOfIntervals && goalState.isGoal) {
-      dispatch(goalActions.updateGoal({ ...goalState, isCompleted: true }));
+    if (!goalState.isCompleted) {
+      dispatch(
+        goalActions.setGoalCompleted({ ...goalState, isCompleted: true })
+      );
     }
-  }, []);
+  }, [dispatch, goalState]);
 
   const myGoalHandler = (event: React.FormEvent) => {
     event.preventDefault();
