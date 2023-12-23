@@ -1,14 +1,21 @@
-import Task from "../../../models/Task";
+import { useAppSelector, useAppDispatch } from "../../../store/hooks";
+import { tasksActions } from "../../../store/tasks-slice";
+import { useEffect } from "react";
 
-const TaskLabel = ({ tasksArr }: { tasksArr: Task[] }) => {
+const TaskLabel = () => {
+  const dispatch = useAppDispatch();
+  const tasksArr = useAppSelector((state) => state.tasks.tasks);
+  
+  useEffect(() => {
+    dispatch(tasksActions.setInitialChosen(tasksArr));
+  }, [dispatch, tasksArr]);
+
   return (
-    <label style={{ fontSize: 18 ,textAlign:"center"}}>
+    <label style={{ fontSize: '1.2rem', textAlign: "center" }}>
       {tasksArr.length > 0
-        ? tasksArr.some((task) => task.isChosen)
-          ? tasksArr.map((task) =>
-              task.isChosen && !task.isCompleted ? task.name : null
-            )
-          : "Choose a task :)"
+        ? tasksArr.map((task) =>
+            task.isChosen && !task.isCompleted ? task.name : null
+          )
         : null}
     </label>
   );

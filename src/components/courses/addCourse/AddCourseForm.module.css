@@ -4,9 +4,9 @@
   font-family: 'roboto', sans-serif;
   flex-direction: column;
   align-items: center;
-  padding: 0.5rem 0.5rem 1rem 0.5rem;
+  padding: 0.5rem 0.5rem 0 0.5rem;
   max-width: 11.8rem;
-  max-height: 19rem;
+  max-height: 17.5rem;
   border-radius: 20%;
   background-color: var(--items-color);
   border: 3px solid var(--border-color);
@@ -29,8 +29,7 @@
 }
 
 .form div button {
-  margin: 1rem;
-  display: flex;
+  margin: 0.8rem 1rem;
   justify-content: space-around;
   background-color: transparent;
   font-size: 110%;
@@ -46,7 +45,6 @@
 .colordot {
   display: grid;
   grid-template-columns: repeat(3, 3rem);
-  margin: 0;
 }
 
 .colordot div {
@@ -77,17 +75,19 @@
 }
 @media (max-width: 576px) {
   .form {
+    padding: 1.5rem 2rem;
     max-width: 17rem;
     max-height: 21rem;
   }
   .form input{
-    max-width: 15rem;
+    max-width: 13rem;
     font-size: 110%;
   }
   .form div button{
     margin: 0 1rem;
   }
   .colordot{
+    margin-top: 1.5rem;
     grid-template-columns: repeat(3, 3.5rem);
     grid-template-rows: repeat(3, 3rem);
   }

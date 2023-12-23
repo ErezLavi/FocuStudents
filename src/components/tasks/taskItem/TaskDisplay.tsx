@@ -14,7 +14,12 @@ interface TaskDisplayProps {
   checkBoxToggle: () => void;
 }
 
-const TaskDisplay: React.FC<TaskDisplayProps> = ({ editedTask, deleteTaskHandler, setIsEdit, checkBoxToggle }) => {
+const TaskDisplay: React.FC<TaskDisplayProps> = ({
+  editedTask,
+  deleteTaskHandler,
+  setIsEdit,
+  checkBoxToggle,
+}) => {
   return (
     <div>
       <label
@@ -26,7 +31,15 @@ const TaskDisplay: React.FC<TaskDisplayProps> = ({ editedTask, deleteTaskHandler
         {editedTask.name}
       </label>
       <section>
-        <label style={{ fontWeight: "400" }}>{editedTask.description}</label>
+        <label
+          style={{
+            fontWeight: "400",
+            textDecoration: editedTask.isCompleted ? "line-through" : "none",
+            color: editedTask.isCompleted ? "#666666" : "#000",
+          }}
+        >
+          {editedTask.description}
+        </label>
       </section>
       <div>
         <IconTrash onClick={deleteTaskHandler} className={classes.trash} />

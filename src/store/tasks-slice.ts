@@ -10,14 +10,17 @@ const tasksSlice = createSlice({
   reducers: {
     addTask(state, action: PayloadAction<Task>) {
       const newTask = action.payload;
-      state.tasks = [...state.tasks, {
-        courseId: newTask.courseId,
-        id: newTask.id,
-        name: newTask.name,
-        description: newTask.description,
-        isCompleted: newTask.isCompleted,
-        isChosen: newTask.isChosen,
-      }];
+      state.tasks = [
+        ...state.tasks,
+        {
+          courseId: newTask.courseId,
+          id: newTask.id,
+          name: newTask.name,
+          description: newTask.description,
+          isCompleted: newTask.isCompleted,
+          isChosen: newTask.isChosen,
+        },
+      ];
     },
 
     removeTaskById(state, action: PayloadAction<string>) {
@@ -33,15 +36,14 @@ const tasksSlice = createSlice({
     },
 
     editTask(state, action: PayloadAction<any>) {
-      const { id, name, isCompleted, isChosen, description } = action.payload;
+      const { id, name, description, isCompleted } = action.payload;
       state.tasks = state.tasks.map((task) =>
         task.id === id
           ? {
               ...task,
-              isCompleted,
-              isChosen,
               name,
-              description
+              description,
+              isCompleted
             }
           : task
       );
@@ -49,9 +51,25 @@ const tasksSlice = createSlice({
     editTasks(state, action: PayloadAction<Task[]>) {
       state.tasks = action.payload;
     },
+
+    setInitialChosen(state, action: PayloadAction<any>) {
+      if (
+        state.tasks.length > 0 &&
+        !state.tasks.some((task) => task.isChosen)
+      ) {
+        const updatedTasks = [...state.tasks];
+        updatedTasks[0] = { ...updatedTasks[0], isChosen: true };
+
+        return {
+          ...state,
+          tasks: updatedTasks,
+        };
+      }
+
+      return state;
+    },
   },
 });
-
 
 export { tasksSlice };
 

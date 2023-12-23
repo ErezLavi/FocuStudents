@@ -16,6 +16,7 @@ const coursesSlice = createSlice({
           id: newCourse.id,
           name: newCourse.name,
           color: newCourse.color,
+          timeCounter: newCourse.timeCounter,
         },
       ];
     },
@@ -25,11 +26,24 @@ const coursesSlice = createSlice({
       );
     },
 
-    editCourse(state, action: PayloadAction<any>) {
+    editCourse(state, action: PayloadAction<{ id: string; name: string }>) {
       const { id, name } = action.payload;
       state.courses = state.courses.map((course) =>
         course.id === id ? { ...course, name } : course
       );
+    },
+
+    incrementTimeCounter(state, action: PayloadAction<string>) {
+      const updatedCourses = state.courses.map((course) =>
+        course.id === action.payload
+          ? { ...course, timeCounter: (course.timeCounter || 0) + 1 }
+          : course
+      );
+
+      return {
+        ...state,
+        courses: updatedCourses,
+      };
     },
   },
 });

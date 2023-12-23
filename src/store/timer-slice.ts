@@ -7,6 +7,7 @@ const initialTimer: Timer = {
   secondsLeft: 30 * 60,
   focusTime: 30,
   breakTime: 5,
+  totalTimeCounter: 0,
 };
 
 const initialTimerState = { entity: initialTimer };
@@ -23,14 +24,22 @@ const timerSlice = createSlice({
         },
       };
     },
-    decrement: (state, action: PayloadAction<{ secondsLeft: number }>) => {
-      const { secondsLeft } = action.payload;
+    decrement: (
+      state,
+      action: PayloadAction<{ secondsLeft: number; totalTimeCounter: number }>
+    ) => {
+      const { secondsLeft, totalTimeCounter } = action.payload;
       const newSecondsLeft = Math.max(0, secondsLeft - 1);
+      let newTimeCounter = totalTimeCounter;
+      if (state.entity.timerMode === "focus") {
+        newTimeCounter = totalTimeCounter + 1;
+      }
       return {
         ...state,
         entity: {
           ...state.entity,
           secondsLeft: newSecondsLeft,
+          totalTimeCounter: newTimeCounter,
         },
       };
     },

@@ -10,13 +10,13 @@ const AddCourseForm: React.FC<{
 }> = (props) => {
   const colorDots = [
     { id: 1, text: "#186F65" },
-    { id: 2, text: "#040D12" },
-    { id: 3, text: "#451952" },
-    { id: 4, text: "#A76F6F" },
+    { id: 2, text: "#092635" },
+    { id: 3, text: "#040D12" },
+    { id: 4, text: "#6A2135" },
     { id: 5, text: "#5C5470" },
-    { id: 6, text: "#94A684" },
-    { id: 7, text: "#088395" },
-    { id: 8, text: "#AE445A" },
+    { id: 6, text: "#176B87" },
+    { id: 7, text: "#A76F6F" },
+    { id: 8, text: "#94A684" },
     { id: 9, text: "#C08261" },
   ];
 
@@ -29,7 +29,7 @@ const AddCourseForm: React.FC<{
     event.preventDefault();
     const enteredName = courseTextInputRef.current!.value;
     const enteredColor = colorDots[activeId - 1].text;
-    const newCourse = new Course(enteredName, enteredColor);
+    const newCourse = new Course(enteredName, enteredColor, 0);
 
     if (enteredName.trim().length === 0) {
       setErrorMessage("*Empty name field..");
@@ -50,8 +50,9 @@ const AddCourseForm: React.FC<{
     <form className={classes.form} onSubmit={submitHandler}>
       <label htmlFor="text">Course Name</label>
       <input type="text" id="text" ref={courseTextInputRef}></input>
-      <span style={{ color: "#860A35" }}>{errorMessage}</span>
-      <label htmlFor="text">Color</label>
+      <span style={{ color: "#860A35", fontSize: "0.9rem" }}>
+        {errorMessage}
+      </span>
       <div className={classes.colordot}>
         {colorDots.map((val) => (
           <div onClick={() => setActiveId(val.id)} key={val.id}>

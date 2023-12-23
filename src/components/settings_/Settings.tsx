@@ -23,7 +23,7 @@ const Settings = () => {
           )
         }
         min={0}
-        max={120}
+        max={180}
       />
       <label>Break time: {timerState.breakTime}:00</label>
       <ReactSlider

@@ -1,6 +1,7 @@
 .form {
   background-color: #f4f2de;
   width: 18.5rem;
+  height: 20rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -79,6 +80,7 @@
 @media (max-width: 576px) {
   .form {
     width: 17.5rem;
+    height: 19rem;
   }
   .startButtonStyle {
     margin-left: 2.5rem;

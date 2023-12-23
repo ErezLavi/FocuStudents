@@ -18,6 +18,8 @@ const DndList: React.FC = () => {
     return currentCourse?.color;
   };
 
+  const chosenTask = tasksArr.find((task) => task.isChosen);
+
   const items = state.map((item, index) => (
     <Draggable key={item.id} index={index} draggableId={item.id}>
       {(provided, snapshot) => (
@@ -32,18 +34,22 @@ const DndList: React.FC = () => {
             {...provided.dragHandleProps}
             className={classes.dragHandle}
             style={
-              item.isChosen
+              chosenTask?.id === item.id
                 ? { backgroundColor: "#e9b384" }
                 : { backgroundColor: "#F4F2DE" }
             }
           >
             <div
               onClick={() => {
-                const updatedTasks = state.map((task) =>
-                  task.id === item.id && !task.isCompleted
-                    ? { ...task, isChosen: !task.isChosen }
-                    : { ...task, isChosen: false }
-                );
+                const updatedTasks = state.map((task) => {
+                  if (task.id === item.id) {
+                    if (task.isChosen) {
+                      return task;
+                    }
+                    return { ...task, isChosen: !task.isChosen };
+                  }
+                  return { ...task, isChosen: false };
+                });
 
                 handlers.setState(updatedTasks);
                 dispatch(tasksActions.editTasks(updatedTasks));

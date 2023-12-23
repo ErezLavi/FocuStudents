@@ -1,11 +1,19 @@
 import { timerActions } from "../../../store/timer-slice";
 import { goalActions } from "../../../store/goal-slice";
+import { coursesActions } from "../../../store/courses-slice";
 import timerAlarm from "../../../sound/switchModeAlarm.mp3";
 import { setInterval } from "worker-timers";
 import Goal from "../../../models/Goal";
 import Timer from "../../../models/Timer";
+import Task from "../../../models/Task";
 
-export const startTimer = (dispatch: any, timerState: any, goalState: any) => {
+export const startTimer = (
+  dispatch: any,
+  timerState: Timer,
+  goalState: Goal,
+  tasksState: Task[]
+) => {
+  const chosenTask = tasksState.find((task) => task.isChosen);
   return setInterval(() => {
     if (timerState.isPaused) {
       return;
@@ -13,7 +21,16 @@ export const startTimer = (dispatch: any, timerState: any, goalState: any) => {
     if (timerState.secondsLeft === 0) {
       return switchMode(dispatch, timerState, goalState);
     }
-    dispatch(timerActions.decrement({ secondsLeft: timerState.secondsLeft }));
+    dispatch(
+      timerActions.decrement({
+        secondsLeft: timerState.secondsLeft,
+        totalTimeCounter: timerState.totalTimeCounter,
+      })
+    );
+    if (chosenTask && timerState.timerMode === "focus") {
+      const chosenCourseId = chosenTask.courseId;
+      dispatch(coursesActions.incrementTimeCounter(chosenCourseId));
+    }
   }, 1000);
 };
 

@@ -4,20 +4,25 @@ import React, { useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../../store/hooks";
 import { IconChevronRightPipe } from "@tabler/icons-react";
 import { timerActions } from "../../../store/timer-slice";
-import { startTimer } from "./timerUtils";
+import { startTimer } from "./TimerUtils";
 import { clearInterval } from "worker-timers";
 import buttonclickSound from "../../../sound/startClickButton.mp3";
 
 const TimerForm = () => {
   const dispatch = useAppDispatch();
-  const tasksArr = useAppSelector((state) => state.tasks.tasks);
   const timerState = useAppSelector((state) => state.timer.entity);
   const goalState = useAppSelector((state) => state.goal.entity);
+  const tasksState = useAppSelector((state) => state.tasks.tasks);
 
   useEffect(() => {
-    const interval = startTimer(dispatch, timerState, goalState);
+    const interval = startTimer(
+      dispatch,
+      timerState,
+      goalState,
+      tasksState
+    );
     return () => clearInterval(interval);
-  }, [dispatch, timerState, goalState]);
+  }, [dispatch, timerState, goalState, tasksState]);
 
   const startButtonHandler = (event: React.FormEvent) => {
     event.preventDefault();
@@ -88,6 +93,9 @@ const TimerForm = () => {
       </label>
       <section>
         <button
+          style={{
+            boxShadow: !timerState.isPaused ? "0 5px #969595" : "",
+          }}
           className={classes.startButtonStyle}
           onClick={startButtonHandler}
         >
@@ -101,7 +109,7 @@ const TimerForm = () => {
           />
         )}
       </section>
-      <TaskLabel tasksArr={tasksArr} />
+      <TaskLabel />
     </form>
   );
 };
