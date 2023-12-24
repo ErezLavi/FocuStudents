@@ -1,13 +1,16 @@
 .slider {
-  color: var(--text-color);
   display: flex;
+  color: var(--text-color);
+  padding: 0.5rem 1.5rem 2rem 1.5rem;
   flex-direction: column;
   align-items: center;
+  border: 3px double var(--time-border-color);
+  border-radius: 15%;
 }
 .slider label {
-  margin-top: 1.5rem;
   font-size: 1.5rem;
   font-weight: 500;
+  margin: 0.5rem;
 }
 .sliderRed {
   height: 2rem;
@@ -39,19 +42,19 @@
 }
 
 .resetDiv {
+  padding: 1rem;
+  border: 3px double var(--time-border-color);
+  border-radius: 15%;
   display: flex;
+  color: var(--text-color);
   flex-direction: column;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   align-items: center;
-}
-.resetDiv hr {
-  border: none;
-  width: 20rem;
-  height: 0.3rem;
-  background-color: var(--text-color);
 }
 .resetDiv div {
   margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: 500;
   display: flex;
   align-items: center;
 }
@@ -66,4 +69,16 @@
 }
 .resetDiv button:hover {
   border: 2px solid var(--focusSetting-color);
+}
+
+@media (max-width: 576px) {
+  .slider{
+    padding: 0.5rem 1rem 2rem 1rem;
+  }
+  .sliderRed{
+    width: 17.5rem;
+  }
+  .sliderGreen{
+    width: 17.5rem;
+  }
 }

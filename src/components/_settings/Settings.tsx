@@ -13,50 +13,62 @@ const Settings = () => {
     dispatch(coursesActions.resetTimeCounter());
   };
   return (
-    <div className={classes.slider}>
-      <label style={{ textDecoration: "underline", fontSize: "1.8rem" }}>
-        Timer Settings
-      </label>
-      <label>Focus time: {timerState.focusTime}:00</label>
-      <ReactSlider
-        className={classes.sliderRed}
-        thumbClassName={classes.sliderRedthumb}
-        trackClassName={classes.track}
-        value={timerState.focusTime}
-        step={5}
-        onChange={(newValue) =>
-          dispatch(
-            timerActions.changeFocusTime({
-              focusTime: newValue,
-            })
-          )
-        }
-        min={0}
-        max={180}
-      />
-      <label>Break time: {timerState.breakTime}:00</label>
-      <ReactSlider
-        className={classes.sliderGreen}
-        thumbClassName={classes.sliderGreenThumb}
-        trackClassName={classes.track}
-        value={timerState.breakTime}
-        onChange={(newValue) =>
-          dispatch(
-            timerActions.changeBreakTime({
-              breakTime: newValue,
-            })
-          )
-        }
-        min={1}
-        max={60}
-      />
+    <div>
+      <div className={classes.slider}>
+        <label
+          style={{
+            textDecoration: "underline",
+            fontSize: "1.6rem",
+          }}
+        >
+          Timer
+        </label>
+        <label>Focus time: {timerState.focusTime}:00</label>
+        <ReactSlider
+          className={classes.sliderRed}
+          thumbClassName={classes.sliderRedthumb}
+          trackClassName={classes.track}
+          value={timerState.focusTime}
+          step={5}
+          onChange={(newValue) =>
+            dispatch(
+              timerActions.changeFocusTime({
+                focusTime: newValue,
+              })
+            )
+          }
+          min={0}
+          max={180}
+        />
+        <label>Break time: {timerState.breakTime}:00</label>
+        <ReactSlider
+          className={classes.sliderGreen}
+          thumbClassName={classes.sliderGreenThumb}
+          trackClassName={classes.track}
+          value={timerState.breakTime}
+          onChange={(newValue) =>
+            dispatch(
+              timerActions.changeBreakTime({
+                breakTime: newValue,
+              })
+            )
+          }
+          min={1}
+          max={60}
+        />
+      </div>
       <div className={classes.resetDiv}>
-        <hr></hr>
-        <label style={{ textDecoration: "underline", fontSize: "1.8rem" }}>
-          Data Settings
+        <label
+          style={{
+            textDecoration: "underline",
+            fontSize: "1.6rem",
+            fontWeight: "500",
+          }}
+        >
+          Data
         </label>
         <div>
-          <label style={{ margin: 0 }}>Reset Time Data:</label>
+          <label>Reset Time Data:</label>
           <button onClick={resetDataHandler}>
             {" "}
             <IconRefresh color="#071952" height="1rem" width="1.2rem" />
