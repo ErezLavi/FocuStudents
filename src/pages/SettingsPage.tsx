@@ -1,5 +1,5 @@
 import TasksLayout from "../components/layout/tasksLayout/TasksLayout";
-import Settings from "../components/settings_/Settings";
+import Settings from "../components/_settings/Settings";
 
 const SettingsPage = () => {
   return (
