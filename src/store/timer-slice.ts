@@ -78,6 +78,17 @@ const timerSlice = createSlice({
         },
       };
     },
+    resetTotalCounter: (
+      state
+    ) => {
+      return {
+        ...state,
+        entity: {
+          ...state.entity,
+          totalTimeCounter: 0,
+        },
+      };
+    },
   },
 });
 

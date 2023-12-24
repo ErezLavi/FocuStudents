@@ -45,6 +45,17 @@ const coursesSlice = createSlice({
         courses: updatedCourses,
       };
     },
+    resetTimeCounter(state) {
+      const updatedCourses = state.courses.map((course) => ({
+        ...course,
+        timeCounter: 0,
+      }));
+
+      return {
+        ...state,
+        courses: updatedCourses,
+      };
+    },
   },
 });
 

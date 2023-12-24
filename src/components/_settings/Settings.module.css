@@ -1,41 +1,69 @@
-
-.slider{
-    margin-top: 2rem;
-    color: var(--text-color);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.slider {
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.slider label{
-    font-size: 1.6rem;
-    font-weight: 500;
+.slider label {
+  margin-top: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 500;
 }
-.sliderRed{
-    height: 2rem;
-    width: 20rem;
-    margin-bottom: 3rem;
-    border: 2px solid var(--focusSetting-color);
-    border-radius: 2rem;
+.sliderRed {
+  height: 2rem;
+  width: 20rem;
+  border: 2px solid var(--focusSetting-color);
+  border-radius: 2rem;
 }
 
-.sliderRedthumb{
-    background-color: var(--focusSetting-color);
-    cursor:pointer;
-    width:2rem;
-    height: 2rem;
-    border-radius: 20px;
+.sliderRedthumb {
+  background-color: var(--focusSetting-color);
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 20px;
 }
 
-.sliderGreen{
-    height: 2rem;
-    width: 20rem;
-    border: 2px solid var(--breakSetting-color);
-    border-radius: 20px;
+.sliderGreen {
+  height: 2rem;
+  width: 20rem;
+  border: 2px solid var(--breakSetting-color);
+  border-radius: 20px;
 }
-.sliderGreenThumb{
-    background-color:var(--breakSetting-color);
-    cursor:pointer;
-    width:2rem;
-    height: 2rem;
-    border-radius: 20px;
+.sliderGreenThumb {
+  background-color: var(--breakSetting-color);
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 20px;
+}
+
+.resetDiv {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5rem;
+  align-items: center;
+}
+.resetDiv hr {
+  border: none;
+  width: 20rem;
+  height: 0.3rem;
+  background-color: var(--text-color);
+}
+.resetDiv div {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+}
+.resetDiv button {
+  display: flex;
+  margin: 1rem;
+  padding: 0.5rem;
+  align-items: center;
+  background-color: var(--items-color);
+  border-radius: 20%;
+  cursor: pointer;
+}
+.resetDiv button:hover {
+  border: 2px solid var(--focusSetting-color);
 }

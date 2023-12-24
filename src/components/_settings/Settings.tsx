@@ -2,12 +2,21 @@ import ReactSlider from "react-slider";
 import classes from "./Settings.module.css";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { timerActions } from "../../store/timer-slice";
+import { coursesActions } from "../../store/courses-slice";
+import { IconRefresh } from "@tabler/icons-react";
 
 const Settings = () => {
   const dispatch = useAppDispatch();
   const timerState = useAppSelector((state) => state.timer.entity);
+  const resetDataHandler = () => {
+    dispatch(timerActions.resetTotalCounter());
+    dispatch(coursesActions.resetTimeCounter());
+  };
   return (
     <div className={classes.slider}>
+      <label style={{ textDecoration: "underline", fontSize: "1.8rem" }}>
+        Timer Settings
+      </label>
       <label>Focus time: {timerState.focusTime}:00</label>
       <ReactSlider
         className={classes.sliderRed}
@@ -41,6 +50,20 @@ const Settings = () => {
         min={1}
         max={60}
       />
+      <div className={classes.resetDiv}>
+        <hr></hr>
+        <label style={{ textDecoration: "underline", fontSize: "1.8rem" }}>
+          Data Settings
+        </label>
+        <div>
+          <label style={{ margin: 0 }}>Reset Time Data:</label>
+          <button onClick={resetDataHandler}>
+            {" "}
+            <IconRefresh color="#071952" height="1rem" width="1.2rem" />
+            Reset
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
