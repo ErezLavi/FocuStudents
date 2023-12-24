@@ -6,12 +6,13 @@
 }
 .item div {
   justify-content: space-between;
+  cursor: pointer;
+
 }
 .item div div {
   min-width: 3.5rem;
   min-height: 5rem;
   margin-right: 1rem;
-  cursor: pointer;
   border-radius: 5%;
   user-select: none;
   box-shadow: 0 3px #999;
@@ -34,5 +35,4 @@
   display: flex;
   font-weight: 700;
   color: var(--text-color);
-  cursor: pointer;
 }

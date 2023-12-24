@@ -10,8 +10,8 @@ const DndList: React.FC = () => {
   const dispatch = useAppDispatch();
   const tasksArr = useAppSelector((state) => state.tasks.tasks);
   const coursesArr = useAppSelector((state) => state.courses.courses);
-  const isEmpty: boolean = tasksArr.length === 0 ? true : false;
   const [state, handlers] = useListState(tasksArr);
+  const isEmpty: boolean = tasksArr.length === 0 ? true : false;
 
   const mapCourseColor = (id: string) => {
     const currentCourse = coursesArr.find((course) => course.id === id);
@@ -34,26 +34,26 @@ const DndList: React.FC = () => {
             {...provided.dragHandleProps}
             className={classes.dragHandle}
             style={
-              chosenTask?.id === item.id
+              chosenTask?.id === item.id && !item.isCompleted
                 ? { backgroundColor: "#e9b384" }
                 : { backgroundColor: "#F4F2DE" }
             }
+            onClick={() => {
+              const updatedTasks = state.map((task) => {
+                if (task.id === item.id && !task.isCompleted) {
+                  if (task.isChosen) {
+                    return task;
+                  }
+                  return { ...task, isChosen: !task.isChosen };
+                }
+                return { ...task, isChosen: false };
+              });
+
+              handlers.setState(updatedTasks);
+              dispatch(tasksActions.editTasks(updatedTasks));
+            }}
           >
             <div
-              onClick={() => {
-                const updatedTasks = state.map((task) => {
-                  if (task.id === item.id) {
-                    if (task.isChosen) {
-                      return task;
-                    }
-                    return { ...task, isChosen: !task.isChosen };
-                  }
-                  return { ...task, isChosen: false };
-                });
-
-                handlers.setState(updatedTasks);
-                dispatch(tasksActions.editTasks(updatedTasks));
-              }}
               style={{ backgroundColor: mapCourseColor(item.courseId) }}
             ></div>
             <section>
@@ -82,7 +82,11 @@ const DndList: React.FC = () => {
               onChange={() => {
                 const updatedTasks = state.map((task) =>
                   task.id === item.id
-                    ? { ...task, isCompleted: !task.isCompleted }
+                    ? {
+                        ...task,
+                        isCompleted: !task.isCompleted,
+                        isChosen: false,
+                      }
                     : { ...task, isCompleted: task.isCompleted }
                 );
                 handlers.setState(updatedTasks);
