@@ -2,8 +2,9 @@
 https://focustudents-todo.netlify.app
 
 React pomodoro-to-do web app made for students
-![desktopImg](https://raw.githubusercontent.com/ErezLavi/FocuStudents/master/focustudents%20media/Screenshot%202023-11-29%20233244.png)
+![desktopImg](https://github.com/ErezLavi/FocuStudents/blob/master/focustudents%20media/Tasks-page.png)
 ![mobiledndGif](https://github.com/ErezLavi/FocuStudents/blob/master/focustudents%20media/dndFocuStudents.gif)
+![dataImg](https://github.com/ErezLavi/FocuStudents/blob/master/focustudents%20media/Data-page.png)
 ![mobileSettings](https://github.com/ErezLavi/FocuStudents/blob/master/focustudents%20media/mobile-settings.png)
 ## Description
 
@@ -21,11 +22,15 @@ Set customizable timers for work and break intervals, creating an optimal study 
 Experience the convenience of a visual task stack.
 Easily prioritize and rearrange your tasks using the drag-and-drop feature, ensuring you tackle your assignments in the most efficient order.
 
+🍅 Data: 
+Keep track of your progress towards your set goals, enabling you to maintain consistency and motivation.
+A dynamic beautiful Donut chart, illustrates the distribution of your focus time across various courses , offering insights into your study patterns.
+
 ## Created using:
 
 ☑️ React js\
 ☑️ TypeScript\
-☑️ CSS and mantine library(dnd and Tabler icons)\
+☑️ CSS and mantine(dnd and Tabler icons)\
 ☑️ Redux Toolkit\
 ☑️ Redux persist (local storage)\  
 ☑️ React Router DOM\
