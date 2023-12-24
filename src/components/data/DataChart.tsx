@@ -31,33 +31,35 @@ const DataChart = () => {
   return (
     <div className={classes.div}>
       <section>Courses Focus Time</section>
-      <ul>
-        {coursesArr.map((course) => (
-          <li key={course.id}>
-            <div style={{ backgroundColor: course.color }}></div>
-            {course.name}
-            {" " +
-              (totalTime !== 0
-                ? (
-                    (100 *
-                      (!isNaN(course.timeCounter) ? course.timeCounter : 0)) /
-                    totalTime
-                  ).toFixed(1)
-                : 0) +
-              "%"}
-          </li>
-        ))}
-      </ul>
-      <PieChart
-        data={coursesData}
-        style={{ marginTop: "1.5rem" }}
-        animate
-        lineWidth={55}
-      />
       <div>
+        <PieChart
+          data={coursesData}
+          style={{ marginTop: "1.5rem", width: "18rem"}}
+          animate
+          lineWidth={55}
+        />
+        <ul>
+          {coursesArr.map((course) => (
+            <li key={course.id}>
+              <div style={{ backgroundColor: course.color }}></div>
+              {course.name}
+              {" " +
+                (totalTime !== 0
+                  ? (
+                      (100 *
+                        (!isNaN(course.timeCounter) ? course.timeCounter : 0)) /
+                      totalTime
+                    ).toFixed(1)
+                  : 0) +
+                "%"}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <section>
         <section style={{ fontSize: "0.8rem" }}>Total Study Time</section>
         <section>{formatTime(totalTime)}</section>
-      </div>
+      </section>
     </div>
   );
 };
