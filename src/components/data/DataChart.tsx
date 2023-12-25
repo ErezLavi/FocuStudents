@@ -21,8 +21,11 @@ const DataChart = () => {
 
   const formatTime = (time: number): string => {
     const hours = Math.floor(time / 3600);
-    const minutes = Math.floor(time / 60);
-    const seconds = time % 60;
+    const remainingTimeAfterHours = time - hours * 3600;
+
+    const minutes = Math.floor(remainingTimeAfterHours / 60);
+    const seconds = remainingTimeAfterHours % 60;
+
     return `${hours < 10 ? `0${hours}` : hours}:${
       minutes < 10 ? `0${minutes}` : minutes
     }:${seconds < 10 ? `0${seconds}` : seconds}`;
@@ -34,7 +37,7 @@ const DataChart = () => {
       <div>
         <PieChart
           data={coursesData}
-          style={{ marginTop: "1.5rem", width: "18rem"}}
+          style={{ marginTop: "1.5rem", width: "18rem" }}
           animate
           lineWidth={55}
         />
