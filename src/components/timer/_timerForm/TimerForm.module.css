@@ -4,15 +4,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   padding: 1rem ;
-  border: 8px double var(--time-border-color);
+  border: 4px double var(--time-border-color);
   color: var(--text-color);
   border-radius: 15%;
 }
 
 .form label {
-  margin-top: 1rem;
   font-weight: bold;
 }
 .form div button {
@@ -33,6 +32,7 @@
 .form section {
   display: flex;
   align-items: center;
+  margin-bottom: 1rem;
   justify-content: space-between;
   width: 100%;
 }
@@ -43,13 +43,13 @@
   color: var(--text-color);
   border: 3px solid var(--time-border-color);
   cursor: pointer;
-  margin-left: 3.2rem;
+  margin-left: 3rem;
   width: 12rem;
   padding: 0.5rem;
-  font-size: 250%;
+  font-size: 2.5rem;
   font-weight: 600;
   border-radius: 15%;
-  box-shadow: 0 7px #cecaca;
+  box-shadow: 0 6px #cecaca;
 }
 
 .startButtonStyle:active {

@@ -4,7 +4,7 @@
   padding: 0.5rem 1.5rem 2rem 1.5rem;
   flex-direction: column;
   align-items: center;
-  border: 3px double var(--time-border-color);
+  border: 4px double var(--time-border-color);
   border-radius: 15%;
 }
 .slider label {
@@ -43,7 +43,7 @@
 
 .resetDiv {
   padding: 1rem;
-  border: 3px double var(--time-border-color);
+  border: 4px double var(--time-border-color);
   border-radius: 15%;
   display: flex;
   color: var(--text-color);
