@@ -54,7 +54,7 @@ const Settings = () => {
             )
           }
           min={1}
-          max={60}
+          max={30}
         />
       </div>
       <div className={classes.resetDiv}>
