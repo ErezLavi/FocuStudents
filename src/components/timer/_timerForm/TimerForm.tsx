@@ -68,16 +68,20 @@ const TimerForm = () => {
   };
 
   return (
-    <form className={classes.form}>
+    <form
+      className={classes.form}
+      style={{
+        border:
+          timerState.timerMode === "focus"
+            ? "6px double #860A35"
+            : "6px double #113946",
+      }}
+    >
       <div>
         <button
           onClick={(event) => modesButtonHandler("focus", event)}
           style={{
             backgroundColor: activeModeBackground("focus"),
-            border:
-              timerState.timerMode === "focus"
-                ? "4px double #860A35"
-                : "2px double #e9b384",
           }}
         >
           Focus
@@ -86,10 +90,6 @@ const TimerForm = () => {
           onClick={(event) => modesButtonHandler("break", event)}
           style={{
             backgroundColor: activeModeBackground("break"),
-            border:
-            timerState.timerMode === "break"
-              ? "4px double #186F65"
-              : "2px double #e9b384",
           }}
         >
           Break
