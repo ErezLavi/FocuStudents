@@ -15,12 +15,7 @@ const TimerForm = () => {
   const tasksState = useAppSelector((state) => state.tasks.tasks);
 
   useEffect(() => {
-    const interval = startTimer(
-      dispatch,
-      timerState,
-      goalState,
-      tasksState
-    );
+    const interval = startTimer(dispatch, timerState, goalState, tasksState);
     return () => clearInterval(interval);
   }, [dispatch, timerState, goalState, tasksState]);
 
@@ -62,7 +57,7 @@ const TimerForm = () => {
     modesButtonHandler(nextMode, event);
   };
 
-  const activeModeStyle = (mode: string): string => {
+  const activeModeBackground = (mode: string): string => {
     return timerState.timerMode === mode ? "#FFE3BB" : "#F4F2DE";
   };
 
@@ -77,13 +72,19 @@ const TimerForm = () => {
       <div>
         <button
           onClick={(event) => modesButtonHandler("focus", event)}
-          style={{ backgroundColor: activeModeStyle("focus") }}
+          style={{
+            backgroundColor: activeModeBackground("focus"),
+            border: "3px double #860A35",
+          }}
         >
           Focus
         </button>
         <button
           onClick={(event) => modesButtonHandler("break", event)}
-          style={{ backgroundColor: activeModeStyle("break") }}
+          style={{
+            backgroundColor: activeModeBackground("break"),
+            border: "3px double #186F65",
+          }}
         >
           Break
         </button>
