@@ -19,7 +19,7 @@ const tasksSlice = createSlice({
           description: newTask.description,
           isCompleted: newTask.isCompleted,
           isChosen: newTask.isChosen,
-          date: newTask.date
+          date: newTask.date,
         },
       ];
     },
@@ -37,14 +37,15 @@ const tasksSlice = createSlice({
     },
 
     editTask(state, action: PayloadAction<any>) {
-      const { id, name, description, isCompleted } = action.payload;
+      const { id, name, description, isCompleted, date } = action.payload;
       state.tasks = state.tasks.map((task) =>
         task.id === id
           ? {
               ...task,
               name,
               description,
-              isCompleted
+              isCompleted,
+              date,
             }
           : task
       );
