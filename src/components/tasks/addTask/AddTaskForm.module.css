@@ -26,7 +26,7 @@
 .form button {
   margin: 0.8rem;
   background-color: var(--items-color);
-  font-size: 110%;
+  font-size: 100%;
   font-weight: bold;
   border: none;
   cursor: pointer;
