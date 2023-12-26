@@ -11,10 +11,20 @@ const NewTaskForm: React.FC<{
   const dispatch = useDispatch();
   const taskNameInputRef = useRef<HTMLInputElement>(null);
   const taskDescriptionInputRef = useRef<HTMLInputElement>(null);
+  const taskDateInputRef = useRef<HTMLInputElement>(null);
   const [nameErrorMessage, setNameErrorMessage] = useState("");
 
   const submitHandler = (event: React.FormEvent) => {
     event.preventDefault();
+    const selectedDate = taskDateInputRef.current!.value;
+    const formatDate = (selectedDate: string) => {
+      if (!selectedDate) {
+        return '';
+      }
+      const [year, month, day] = selectedDate.split("-");
+      return `${day}/${month}/${year.slice(2)}`;
+    };
+
     const enteredName = taskNameInputRef.current!.value;
     const enteredDescription = taskDescriptionInputRef.current!.value;
 
@@ -28,7 +38,8 @@ const NewTaskForm: React.FC<{
       enteredDescription,
       currentCourseId,
       false,
-      false
+      false,
+      formatDate(selectedDate)
     );
 
     dispatch(tasksActions.addTask(newTask));
@@ -44,14 +55,18 @@ const NewTaskForm: React.FC<{
   return (
     <form className={classes.form} onSubmit={submitHandler}>
       <div>
-        <label>Name:</label>
+        <label>Name</label>
       </div>
       <input type="text" id="name" ref={taskNameInputRef}></input>
       <label style={{ color: "#860A35" }}>{nameErrorMessage}</label>
       <div>
-        <label>Description:</label>
+        <label>Description</label>
       </div>
       <input type="text" id="description" ref={taskDescriptionInputRef}></input>
+      <div>
+        <label>Date</label>
+      </div>
+      <input type="date" id="dateInput" ref={taskDateInputRef}></input>
       <div>
         <button type="button" onClick={props.onCancel}>
           Close

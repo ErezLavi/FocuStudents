@@ -19,6 +19,7 @@ const tasksSlice = createSlice({
           description: newTask.description,
           isCompleted: newTask.isCompleted,
           isChosen: newTask.isChosen,
+          date: newTask.date
         },
       ];
     },
@@ -52,7 +53,7 @@ const tasksSlice = createSlice({
       state.tasks = action.payload;
     },
 
-    setInitialChosen(state, action: PayloadAction<any>) {
+    setInitialChosen(state) {
       if (
         state.tasks.length > 0 &&
         !state.tasks.some((task) => task.isChosen)

@@ -14,12 +14,14 @@ const TaskItem = ({ task }: { task: Task }) => {
     name: task.name,
     description: task.description,
     isCompleted: task.isCompleted,
+    date: task.date,
   });
   const [errorMessage, setErrorMessage] = useState("");
   const [editedTaskName, setEditedTaskName] = useState(editedTask.name);
   const [editedTaskDescription, setEditedTaskDescription] = useState(
     editedTask.description
   );
+  const [editedTaskDate, setEditedTaskDate] = useState(editedTask.date);
 
   const editTaskHandler = (event: React.FormEvent) => {
     event.preventDefault();
@@ -32,6 +34,7 @@ const TaskItem = ({ task }: { task: Task }) => {
       ...editedTask,
       name: editedTaskName,
       description: editedTaskDescription,
+      date: editedTaskDate
     };
     dispatch(tasksActions.editTask(updatedTask));
     setEditedTask(updatedTask);
@@ -56,11 +59,11 @@ const TaskItem = ({ task }: { task: Task }) => {
     <section className={classes.section} id={task.id}>
       {!isEdit ? (
         <TaskDisplay
-        editedTask={editedTask}
-        deleteTaskHandler={deleteTaskHandler}
-        setIsEdit={setIsEdit}
-        checkBoxToggle={checkBoxToggle}
-      />
+          editedTask={editedTask}
+          deleteTaskHandler={deleteTaskHandler}
+          setIsEdit={setIsEdit}
+          checkBoxToggle={checkBoxToggle}
+        />
       ) : (
         <TaskEditForm
           task={task}
@@ -72,6 +75,8 @@ const TaskItem = ({ task }: { task: Task }) => {
           setErrorMessage={setErrorMessage}
           editedTaskDescription={editedTaskDescription}
           setEditedTaskDescription={setEditedTaskDescription}
+          editedTaskDate={editedTaskDate}
+          setEditedTaskDate={setEditedTaskDate}
         />
       )}
     </section>

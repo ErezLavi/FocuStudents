@@ -8,6 +8,7 @@ interface TaskDisplayProps {
     name: string;
     description: string;
     isCompleted: boolean;
+    date: string | null;
   };
   deleteTaskHandler: (event: React.FormEvent) => void;
   setIsEdit: React.Dispatch<React.SetStateAction<boolean>>;
@@ -33,13 +34,23 @@ const TaskDisplay: React.FC<TaskDisplayProps> = ({
       <section>
         <label
           style={{
-            fontWeight: "400",
+            fontWeight: "350",
             textDecoration: editedTask.isCompleted ? "line-through" : "none",
             color: editedTask.isCompleted ? "#666666" : "#000",
           }}
         >
           {editedTask.description}
         </label>
+      </section>
+      <section
+        style={{
+          marginTop: "0.5rem",
+          fontSize: "0.9rem",
+          textDecoration: editedTask.isCompleted ? "line-through" : "none",
+          color: editedTask.isCompleted ? "#666666" : "#000",
+        }}
+      >
+        <label>{editedTask.date}</label>
       </section>
       <div>
         <IconTrash onClick={deleteTaskHandler} className={classes.trash} />

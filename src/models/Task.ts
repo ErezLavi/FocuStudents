@@ -5,13 +5,15 @@ class Task {
   courseId: string;
   isCompleted: boolean;
   isChosen: boolean;
+  date: string;
 
   constructor(
     taskName: string,
     taskDescription: string,
     courseId: string,
     isCompleted: boolean,
-    isChosen: boolean
+    isChosen: boolean,
+    date: string
   ) {
     this.id = new Date().toISOString();
     this.name = taskName;
@@ -19,6 +21,7 @@ class Task {
     this.courseId = courseId;
     this.isCompleted = isCompleted;
     this.isChosen = isChosen;
+    this.date = date;
   }
 }
 
