@@ -1,8 +1,7 @@
 .section {
-  width: 11.25rem;
   min-height: 5rem;
   margin-top: 0.5rem;
-  padding: 0.625rem;
+  padding: 0.625rem 1rem;
   border-radius: 20%;
   color: #000;
   background-color: var(--items-color);
@@ -49,7 +48,7 @@
 
 @media (max-width: 768px) {
   .section {
-    width: 13.7rem;
+    max-width: 13.7rem;
   }
   .section form input{
     max-width: 12rem;
@@ -58,10 +57,11 @@
 
 @media (max-width: 576px) {
   .section {
-    width: 16.7rem;
+    max-width: 16.5rem;
+    padding: 0.625rem 1.2rem;
   }
   .section form input{
-    max-width: 16rem;
+    max-width: 15rem;
   }
 }
 
