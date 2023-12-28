@@ -1,4 +1,5 @@
 import classes from "./DataChart.module.css";
+import { useState } from "react";
 import { PieChart } from "react-minimal-pie-chart";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { timerActions } from "../../store/timer-slice";
@@ -6,6 +7,7 @@ import { coursesActions } from "../../store/courses-slice";
 import { IconRefresh } from "@tabler/icons-react";
 
 const DataChart = () => {
+  const [resetClicked, setResetClicked] = useState(false);
   const dispatch = useAppDispatch();
   const timerState = useAppSelector((state) => state.timer.entity);
   const coursesArr = useAppSelector((state) => state.courses.courses);
@@ -36,6 +38,7 @@ const DataChart = () => {
   };
 
   const resetDataHandler = () => {
+    setResetClicked(false);
     dispatch(timerActions.resetTotalCounter());
     dispatch(coursesActions.resetTimeCounter());
   };
@@ -74,12 +77,20 @@ const DataChart = () => {
       </section>
       <div className={classes.resetDiv}>
         <div>
-          {" "}
-          <button onClick={resetDataHandler}>
-            {" "}
-            <IconRefresh color="#071952" height="1rem" width="1.2rem" />
-            Reset Time Data
-          </button>
+          {!resetClicked ? (
+            <button onClick={() => setResetClicked(true)}>
+              <IconRefresh color="#071952" height="1rem" width="1.2rem" />
+              Reset All Time Data
+            </button>
+          ) : (
+            <div>
+              <label>⚠️Are you sure?</label>
+              <div>
+                <button onClick={resetDataHandler}>Yes</button>
+                <button onClick={() => setResetClicked(false)}>No</button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

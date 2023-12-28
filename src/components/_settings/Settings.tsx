@@ -32,7 +32,7 @@ const Settings = () => {
               })
             )
           }
-          min={0}
+          min={5}
           max={180}
         />
         <label>Break time: {timerState.breakTime}:00</label>
