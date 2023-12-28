@@ -73,8 +73,8 @@ const TimerForm = () => {
       style={{
         border:
           timerState.timerMode === "focus"
-            ? "6px double #860A35"
-            : "6px double #113946",
+            ? "8px double #860A35"
+            : "8px double #5C8374",
       }}
     >
       <div>

@@ -1,10 +1,10 @@
 :root{
-  --main-color: #F4F2DE;
+  --main-color: #f4f2de;
   --items-color: #f4e0b9;
   --border-color: #ad8989;
   --text-color: #071952;
   --focusSetting-color: #860A35;
-  --breakSetting-color: #113946;
+  --breakSetting-color: #5C8374;
 }
 .main {
   background-color: var( --main-color);

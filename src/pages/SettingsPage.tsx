@@ -1,11 +1,11 @@
-import TimerLayout from "../components/layout/timerLayout/TimerLayout";
+import TasksLayout from "../components/layout/tasksLayout/TasksLayout";
 import Settings from "../components/_settings/Settings";
 
 const SettingsPage = () => {
   return (
-    <TimerLayout>
-        <Settings />
-    </TimerLayout>
+    <TasksLayout>
+      <Settings />
+    </TasksLayout>
   );
 };
 
