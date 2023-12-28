@@ -1,11 +1,8 @@
 .slider {
   display: flex;
   color: var(--text-color);
-  padding: 0.5rem 1.5rem 2rem 1.5rem;
   flex-direction: column;
   align-items: center;
-  border: 4px double var(--time-border-color);
-  border-radius: 15%;
 }
 .slider label {
   font-size: 1.5rem;
@@ -39,37 +36,6 @@
   width: 2rem;
   height: 2rem;
   border-radius: 20px;
-}
-
-.resetDiv {
-  padding: 1rem;
-  border: 4px double var(--time-border-color);
-  border-radius: 15%;
-  display: flex;
-  color: var(--text-color);
-  flex-direction: column;
-  margin-top: 1rem;
-  align-items: center;
-}
-.resetDiv div {
-  margin-top: 1rem;
-  font-size: 1.2rem;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-}
-.resetDiv button {
-  display: flex;
-  margin: 1rem;
-  padding: 0.5rem;
-  align-items: center;
-  background-color: var(--items-color);
-  border: 2px solid var(--time-border-color);
-  border-radius: 20%;
-  cursor: pointer;
-}
-.resetDiv button:hover {
-  border: 2px solid var(--focusSetting-color);
 }
 
 @media (max-width: 576px) {

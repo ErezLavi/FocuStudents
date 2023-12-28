@@ -3,15 +3,11 @@ import classes from "./Settings.module.css";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { timerActions } from "../../store/timer-slice";
 import { coursesActions } from "../../store/courses-slice";
-import { IconRefresh } from "@tabler/icons-react";
 
 const Settings = () => {
   const dispatch = useAppDispatch();
   const timerState = useAppSelector((state) => state.timer.entity);
-  const resetDataHandler = () => {
-    dispatch(timerActions.resetTotalCounter());
-    dispatch(coursesActions.resetTimeCounter());
-  };
+
   return (
     <div>
       <div className={classes.slider}>
@@ -56,25 +52,6 @@ const Settings = () => {
           min={1}
           max={30}
         />
-      </div>
-      <div className={classes.resetDiv}>
-        <label
-          style={{
-            textDecoration: "underline",
-            fontSize: "1.6rem",
-            fontWeight: "500",
-          }}
-        >
-          Data
-        </label>
-        <div>
-          <label>Reset Time Data:</label>
-          <button onClick={resetDataHandler}>
-            {" "}
-            <IconRefresh color="#071952" height="1rem" width="1.2rem" />
-            Reset
-          </button>
-        </div>
       </div>
     </div>
   );

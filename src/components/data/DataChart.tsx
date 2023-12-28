@@ -1,8 +1,12 @@
 import classes from "./DataChart.module.css";
 import { PieChart } from "react-minimal-pie-chart";
-import { useAppSelector } from "../../store/hooks";
+import { useAppSelector, useAppDispatch } from "../../store/hooks";
+import { timerActions } from "../../store/timer-slice";
+import { coursesActions } from "../../store/courses-slice";
+import { IconRefresh } from "@tabler/icons-react";
 
 const DataChart = () => {
+  const dispatch = useAppDispatch();
   const timerState = useAppSelector((state) => state.timer.entity);
   const coursesArr = useAppSelector((state) => state.courses.courses);
   const totalTime = !isNaN(timerState.totalTimeCounter)
@@ -29,6 +33,11 @@ const DataChart = () => {
     return `${hours < 10 ? `0${hours}` : hours}:${
       minutes < 10 ? `0${minutes}` : minutes
     }:${seconds < 10 ? `0${seconds}` : seconds}`;
+  };
+
+  const resetDataHandler = () => {
+    dispatch(timerActions.resetTotalCounter());
+    dispatch(coursesActions.resetTimeCounter());
   };
 
   return (
@@ -63,6 +72,16 @@ const DataChart = () => {
         <section style={{ fontSize: "0.8rem" }}>Total Study Time</section>
         <section>{formatTime(totalTime)}</section>
       </section>
+      <div className={classes.resetDiv}>
+        <div>
+          {" "}
+          <button onClick={resetDataHandler}>
+            {" "}
+            <IconRefresh color="#071952" height="1rem" width="1.2rem" />
+            Reset Time Data
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
