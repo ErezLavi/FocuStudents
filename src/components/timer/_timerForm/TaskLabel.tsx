@@ -8,7 +8,7 @@ const TaskLabel = () => {
   
   useEffect(() => {
     dispatch(tasksActions.setInitialChosen());
-  }, [dispatch]);
+  }, [dispatch, tasksArr]);
 
   return (
     <label style={{ fontSize: '1.2rem', textAlign: "center" }}>

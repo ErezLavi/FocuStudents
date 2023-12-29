@@ -1,21 +1,19 @@
 .item {
   width: 20rem;
-  border-radius: 5%;
   border: 2px solid var(--time-border-color);
+  border-radius: 3%;
   cursor: pointer;
+  user-select: none;
 }
 .item div {
+  position: relative;
   justify-content: space-between;
   cursor: pointer;
-
 }
 .item div div {
-  min-width: 3.5rem;
   min-height: 5rem;
-  margin-right: 1rem;
+  min-width: 3.5rem;
   border-radius: 5%;
-  user-select: none;
-  box-shadow: 0 3px #999;
 }
 .item div div:active {
   box-shadow: 2px 2px #666;
@@ -25,7 +23,8 @@
   box-shadow: var(--mantine-shadow-sm);
 }
 .checkBox {
-  margin: 1rem;
+  margin: 2rem 1rem 2rem 1rem;
+  height: 2rem;
   transform: scale(2);
   accent-color: #252b48;
   cursor: pointer;

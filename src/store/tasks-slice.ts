@@ -59,13 +59,17 @@ const tasksSlice = createSlice({
         state.tasks.length > 0 &&
         !state.tasks.some((task) => task.isChosen)
       ) {
-        const updatedTasks = [...state.tasks];
-        updatedTasks[0] = { ...updatedTasks[0], isChosen: true };
+        for (let i = 0; i < state.tasks.length; i++) {
+          if (!state.tasks[i].isChosen && !state.tasks[i].isCompleted) {
+            const updatedTasks = [...state.tasks];
+            updatedTasks[i] = { ...updatedTasks[i], isChosen: true };
 
-        return {
-          ...state,
-          tasks: updatedTasks,
-        };
+            return {
+              ...state,
+              tasks: updatedTasks,
+            };
+          }
+        }
       }
 
       return state;
