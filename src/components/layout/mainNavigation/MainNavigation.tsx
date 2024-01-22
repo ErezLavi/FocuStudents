@@ -42,7 +42,7 @@ const MainNavigation: React.FC = () => {
     if (currentNavItem) {
       setActiveId(currentNavItem.id);
     }
-  }, [location.pathname]);
+  }, [location.pathname, navButtons]);
 
   const items = navButtons.map((val) => (
     <li key={val.id} onClick={() => handleItemClick(val.id)}>
