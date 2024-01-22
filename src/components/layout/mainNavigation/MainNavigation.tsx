@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import classes from "./MainNavigation.module.css";
 import { NavLink, useLocation } from "react-router-dom";
 import { Fade as Hamburger } from "hamburger-react";
@@ -18,12 +18,15 @@ const MainNavigation: React.FC = () => {
     setOpen((oldState) => !oldState);
   };
 
-  const navButtons = [
-    { id: 1, text: "Tasks", icon: <IconListCheck /> },
-    { id: 2, text: "Timer", icon: <IconAlarm /> },
-    { id: 3, text: "Data", icon: <IconChartPieFilled /> },
-    { id: 4, text: "Settings", icon: <IconSettings /> },
-  ];
+  const navButtons = useMemo(
+    () => [
+      { id: 1, text: "Tasks", icon: <IconListCheck /> },
+      { id: 2, text: "Timer", icon: <IconAlarm /> },
+      { id: 3, text: "Data", icon: <IconChartPieFilled /> },
+      { id: 4, text: "Settings", icon: <IconSettings /> },
+    ],
+    []
+  );
 
   const handleItemClick = (id: number) => {
     setActiveId(id);
