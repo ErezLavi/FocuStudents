@@ -1,3 +1,4 @@
+import React, { useEffect, useMemo  } from 'react';
 import classes from "./DndList.module.css";
 import cx from "clsx";
 import { Text } from "@mantine/core";
@@ -13,10 +14,10 @@ const DndList: React.FC = () => {
   const [state, handlers] = useListState(tasksArr);
   const isEmpty: boolean = tasksArr.length === 0 ? true : false;
 
-  const mapCourseColor = (id: string) => {
+  const mapCourseColor = useMemo(() => (id: string) => {
     const currentCourse = coursesArr.find((course) => course.id === id);
     return currentCourse?.color;
-  };
+  }, [coursesArr]);
 
   const chosenTask = tasksArr.find((task) => task.isChosen);
 
@@ -98,6 +99,11 @@ const DndList: React.FC = () => {
       )}
     </Draggable>
   ));
+
+  useEffect(() => {
+    // Update tasks order in state when state changes
+    dispatch(tasksActions.editTasks(state));
+  }, [state, dispatch]);
 
   return (
     <DragDropContext
