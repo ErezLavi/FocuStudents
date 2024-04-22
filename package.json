@@ -17,6 +17,7 @@
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react-swc": "^3.6.0",
+    "firebase": "^10.11.0",
     "hamburger-react": "^2.5.0",
     "rc-progress": "^3.5.1",
     "react": "^18.2.0",
@@ -35,6 +36,7 @@
     "worker-timers": "^7.0.78"
   },
   "scripts": {
+    "dev": "vite --host",
     "start": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview"

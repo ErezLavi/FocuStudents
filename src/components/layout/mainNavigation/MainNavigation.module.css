@@ -23,19 +23,43 @@ section {
   font-size: 2.5rem;
   color: var(--icons-color);
   cursor: context-menu;
-  font-family: 'roboto', sans-serif;
+  font-family: "roboto", sans-serif;
 }
+
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 .nav ul {
   display: flex;
-  margin-right: 4rem;
 }
 
 .nav li {
   display: flex;
-  margin: 0 2rem;
-  font-family: 'roboto', sans-serif;
+  margin: 0 1.5rem;
+  font-family: "roboto", sans-serif;
+  align-items: center;
   font-size: 1.5rem;
+  color: var(--icons-color);
+}
+
+.nav li:hover {
+  color: var(--icons-active-color);
+}
+
+.nav li button {
+  background: transparent;
+  border: none;
+  color: var(--icons-color);
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.nav li button:hover {
+  color: var(--icons-active-color);
 }
 
 .nav a {
@@ -60,23 +84,50 @@ section {
   align-items: center;
 }
 
-.mobileHeader div{
+.mobileHeader div {
   margin-right: 1.2rem;
 }
 
-.mobileNav ul {
-  padding: 0;
+.mobileNav {
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobileNav ul {
+  display: flex;
+  padding: 0;
+  margin: 0.5rem 0;
   justify-content: center;
   text-align: center;
 }
 .mobileNav li {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin: 0 0.5rem;
-  font-size: 1.2rem;
+  align-items: center;
+  margin: 0rem 0.5rem;
+  font-size: 1.1rem;
+  color: var(--icons-color);
+}
+.mobileNav li:hover {
+  color: var(--icons-active-color);
+}
+.mobileNav li button {
+  background: transparent;
+  border: none;
+  color: var(--icons-color);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.mobileNav li button:hover {
+  color: var(--icons-active-color);
 }
 .mobileNav a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-decoration: none;
   color: var(--icons-color);
 }
@@ -100,9 +151,13 @@ section {
     display: block;
     margin-right: 1.2rem;
   }
+
 }
-@media (max-width: 576px){
-  .logo{
+@media (max-width: 576px) {
+  .logo {
     font-size: 2rem;
+  }
+  .mobileNav li{
+    margin: 0 0.5rem;
   }
 }

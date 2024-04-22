@@ -37,6 +37,14 @@ const goalSlice = createSlice({
         return state;
       }
     },
+    fetchGoal: (state, action: PayloadAction<Goal>) => {
+      return {
+        ...state,
+        entity: {
+          ...action.payload,
+        },
+      };
+    }
   },
 });
 

@@ -71,9 +71,11 @@ const tasksSlice = createSlice({
           }
         }
       }
-
       return state;
     },
+    fetchTasks(state, action: PayloadAction<Task[]>) {
+      state.tasks = action.payload;
+    }
   },
 });
 

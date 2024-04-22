@@ -89,6 +89,14 @@ const timerSlice = createSlice({
         },
       };
     },
+    fetchTimer: (state, action: PayloadAction<Timer>) => {
+      return {
+        ...state,
+        entity: {
+          ...action.payload,
+        },
+      };
+    }
   },
 });
 

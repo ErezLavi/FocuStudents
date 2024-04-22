@@ -1,6 +1,10 @@
 import classes from "./Goal.module.css";
 import { Line } from "rc-progress";
-import { IconRefresh, IconCircleCheckFilled } from "@tabler/icons-react";
+import {
+  IconRefresh,
+  IconCircleCheckFilled,
+  IconTargetArrow,
+} from "@tabler/icons-react";
 import { useState, useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { goalActions } from "../../store/goal-slice";
@@ -53,7 +57,10 @@ const Goal = () => {
             <IconCircleCheckFilled className={classes.checkIcon} />
           </>
         ) : (
-          <section>My Goal</section>
+          <>
+            <section> My Goal</section>
+            <IconTargetArrow />
+          </>
         )}
       </header>
       {!goalState.isGoal ? (
@@ -67,7 +74,7 @@ const Goal = () => {
               min="1"
               max="100"
             />
-            <section style={{ fontSize: "0.7rem" }}>Focus Intervals</section>
+            <section>Focus Intervals</section>
           </div>
 
           <button onClick={myGoalHandler}>Set A Goal</button>

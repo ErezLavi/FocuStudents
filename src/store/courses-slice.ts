@@ -56,6 +56,9 @@ const coursesSlice = createSlice({
         courses: updatedCourses,
       };
     },
+    fetchCourses(state, action: PayloadAction<Course[]>) {
+      state.courses = action.payload;
+    },
   },
 });
 

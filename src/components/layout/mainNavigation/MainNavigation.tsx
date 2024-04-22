@@ -7,12 +7,15 @@ import {
   IconAlarm,
   IconSettings,
   IconChartPieFilled,
+  IconUser,
 } from "@tabler/icons-react";
+import AuthDetails from "../../auth/AuthDetails";
 
 const MainNavigation: React.FC = () => {
+  const location = useLocation();
   const [activeId, setActiveId] = useState<number | undefined>(1);
   const [isOpen, setOpen] = useState(false);
-  const location = useLocation();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const toggleBurger = () => {
     setOpen((oldState) => !oldState);
@@ -24,13 +27,14 @@ const MainNavigation: React.FC = () => {
       { id: 2, text: "Timer", icon: <IconAlarm /> },
       { id: 3, text: "Data", icon: <IconChartPieFilled /> },
       { id: 4, text: "Settings", icon: <IconSettings /> },
+      ...(!isLoggedIn ? [{ id: 5, text: "Login", icon: <IconUser /> }] : []),
     ],
-    []
+    [isLoggedIn]
   );
 
   const handleItemClick = (id: number) => {
     setActiveId(id);
-    localStorage.setItem("activeId", String(id));
+    localStorage.setItem("activeId", id.toString());
   };
 
   useEffect(() => {
@@ -69,6 +73,7 @@ const MainNavigation: React.FC = () => {
       </section>
       <nav className={!isOpen ? `${classes.nav}` : `${classes.mobileNav}`}>
         <ul>{items}</ul>
+        <AuthDetails isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       </nav>
     </header>
   );

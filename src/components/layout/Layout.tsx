@@ -4,7 +4,7 @@ import MainNavigation from "./mainNavigation/MainNavigation";
 
 
 type LayoutProps = {
-  children: React.ReactNode; 
+  children: React.ReactNode,
 };
 
 const Layout = (props: LayoutProps) => {

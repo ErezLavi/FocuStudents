@@ -1,0 +1,76 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form div section{
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-decoration: underline;
+  margin-top: 0.5rem;
+  color: var(--text-color);
+}
+
+.control {
+  display: flex;
+  align-items: center;
+}
+
+.control label {
+  color: var(--text-color);
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-left: 0.3rem;
+}
+
+.control input {
+  width: 17rem;
+  height: 1.5rem;
+  font-size: 1rem;
+  background-color: #f3f0e2;
+  border: 2px solid var(--text-color);
+  border-radius: 8px;
+  margin: 0.3rem;
+}
+
+.control input:focus {
+  outline: none;
+  border: 2px solid var(--border-color);
+}
+
+.login {
+  color: var(--text-color);
+  background-color: var(--items-color);
+  width: 7rem;
+  height: 2.5rem;
+  border: 2px solid var(--border-color);
+  font-size: 1.3rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.login:hover {
+  border: 2px solid var(--text-color);
+  align-items: center;
+}
+
+.register button {
+  font-weight: 600;
+  background-color: var(--main-color);
+  text-decoration: underline;
+  border: none;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  margin: 0.15rem;
+  cursor: pointer;
+}
+
+.register button:hover {
+  transform: scale(1.05);
+}
