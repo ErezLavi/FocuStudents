@@ -1,9 +1,8 @@
 import * as React from "react";
 import classes from "./AddCourseForm.module.css";
 import { useRef, useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { coursesActions } from "../../../store/courses-slice";
-import Course from "../../../models/Course";
+import { useAppDispatch } from "../../../store/hooks";
+import { addCourse } from "../../../store/courses-slice";
 
 const AddCourseForm: React.FC<{
   onCancel: (event: React.FormEvent) => void;
@@ -23,20 +22,33 @@ const AddCourseForm: React.FC<{
   const [activeId, setActiveId] = useState<number>(1);
   const courseTextInputRef = useRef<HTMLInputElement>(null);
   const [errorMessage, setErrorMessage] = useState("");
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+
+  const createCourse = (
+    courseText: string,
+    color: string,
+    timeCounter: number
+  ) => {
+    return {
+      id: new Date().toISOString(),
+      name: courseText,
+      color: color,
+      timeCounter: timeCounter,
+    };
+  };
 
   const submitHandler = (event: React.FormEvent) => {
     event.preventDefault();
     const enteredName = courseTextInputRef.current!.value;
     const enteredColor = colorDots[activeId - 1].text;
-    const newCourse = new Course(enteredName, enteredColor, 0);
+    const newCourse = createCourse(enteredName, enteredColor, 0);
 
     if (enteredName.trim().length === 0) {
       setErrorMessage("*Empty name field..");
       return;
     }
     setErrorMessage("");
-    dispatch(coursesActions.addCourse(newCourse));
+    dispatch(addCourse(newCourse));
     courseTextInputRef.current!.value = "";
   };
 

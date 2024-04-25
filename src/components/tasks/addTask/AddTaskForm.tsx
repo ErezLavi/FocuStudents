@@ -1,30 +1,46 @@
 import classes from "./AddTaskForm.module.css";
 import React, { useState, useRef, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { tasksActions } from "../../../store/tasks-slice";
-import Task from "../../../models/Task";
+import { useAppDispatch } from "../../../store/hooks";
+import { addTask } from "../../../store/tasks-slice";
 
 const NewTaskForm: React.FC<{
   onCancel: (event: React.FormEvent) => void;
   getCurrentCourseId: () => string;
 }> = (props) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const taskNameInputRef = useRef<HTMLInputElement>(null);
   const taskDescriptionInputRef = useRef<HTMLInputElement>(null);
   const taskDateInputRef = useRef<HTMLInputElement>(null);
   const [nameErrorMessage, setNameErrorMessage] = useState("");
 
+  const createTask = (
+    name: string,
+    description: string,
+    courseId: string,
+    selectedDate: string
+  ) => {
+    return {
+      id: new Date().toISOString(),
+      name: name,
+      description: description,
+      courseId: courseId,
+      isCompleted: false,
+      isChosen: false,
+      date: formatDate(selectedDate),
+    };
+  };
+
+  const formatDate = (selectedDate: string) => {
+    if (!selectedDate) {
+      return "";
+    }
+    const [year, month, day] = selectedDate.split("-");
+    return `${day}/${month}/${year.slice(2)}`;
+  };
+
   const submitHandler = (event: React.FormEvent) => {
     event.preventDefault();
     const selectedDate = taskDateInputRef.current!.value;
-    const formatDate = (selectedDate: string) => {
-      if (!selectedDate) {
-        return '';
-      }
-      const [year, month, day] = selectedDate.split("-");
-      return `${day}/${month}/${year.slice(2)}`;
-    };
-
     const enteredName = taskNameInputRef.current!.value;
     const enteredDescription = taskDescriptionInputRef.current!.value;
 
@@ -33,16 +49,14 @@ const NewTaskForm: React.FC<{
       return;
     }
     const currentCourseId = props.getCurrentCourseId();
-    const newTask = new Task(
+    const newTask = createTask(
       enteredName,
       enteredDescription,
       currentCourseId,
-      false,
-      false,
-      formatDate(selectedDate)
+      selectedDate
     );
 
-    dispatch(tasksActions.addTask(newTask));
+    dispatch(addTask(newTask));
     taskNameInputRef.current!.value = "";
   };
 

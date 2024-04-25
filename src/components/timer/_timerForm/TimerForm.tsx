@@ -3,14 +3,17 @@ import TaskLabel from "./TaskLabel";
 import React, { useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../../store/hooks";
 import { IconChevronRightPipe } from "@tabler/icons-react";
-import { timerActions } from "../../../store/timer-slice";
+import { updateTimer } from "../../../store/timer-slice";
+import { updateCourseTimeCounter } from "../../../store/courses-slice";
 import { startTimer } from "./TimerUtils";
 import { clearInterval } from "worker-timers";
-import buttonclickSound from "../../../sound/startClickButton.mp3";
+import buttonClickSound from "../../../sound/startClickButton.mp3";
+import { c } from "vite/dist/node/types.d-aGj9QkWt";
 
 const TimerForm = () => {
   const dispatch = useAppDispatch();
   const timerState = useAppSelector((state) => state.timer.entity);
+  const coursesState = useAppSelector((state) => state.courses.courses);
   const goalState = useAppSelector((state) => state.goal.entity);
   const tasksState = useAppSelector((state) => state.tasks.tasks);
 
@@ -21,14 +24,18 @@ const TimerForm = () => {
 
   const startButtonHandler = (event: React.FormEvent) => {
     event.preventDefault();
-    const audio = new Audio(buttonclickSound);
+    const audio = new Audio(buttonClickSound);
     audio.play();
-    dispatch(
-      timerActions.updateTimer({
-        ...timerState,
-        isPaused: !timerState.isPaused,
-      })
+    dispatch(updateTimer({ ...timerState, isPaused: !timerState.isPaused }));
+    // Update course time counter in Firestore
+    const chosenTask = tasksState.find((task) => task.isChosen);
+    if (!chosenTask) return;
+    const currentCourseId = chosenTask.courseId;
+    const currentCourse = coursesState.find(
+      (course) => course.id === currentCourseId
     );
+    if (!currentCourse) return;
+    dispatch(updateCourseTimeCounter(currentCourse));
   };
 
   const modesButtonHandler = (
@@ -39,11 +46,13 @@ const TimerForm = () => {
     if (timerState.timerMode === mode) {
       return;
     }
+    const chosenTask = tasksState.find((task) => task.isChosen);
+    const currentCourse = chosenTask?.courseId;
     const nextSeconds =
       (mode === "focus" ? timerState.focusTime : timerState.breakTime) * 60;
 
     dispatch(
-      timerActions.updateTimer({
+      updateTimer({
         ...timerState,
         timerMode: mode,
         secondsLeft: nextSeconds,

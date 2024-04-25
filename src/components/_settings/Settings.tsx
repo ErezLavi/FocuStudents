@@ -1,7 +1,7 @@
 import ReactSlider from "react-slider";
 import classes from "./Settings.module.css";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { timerActions } from "../../store/timer-slice";
+import { changeFocusTime, changeBreakTime } from "../../store/timer-slice";
 
 const Settings = () => {
   const dispatch = useAppDispatch();
@@ -12,7 +12,6 @@ const Settings = () => {
       <div className={classes.slider}>
         <label
           style={{
-            textDecoration: "underline",
             fontSize: "1.6rem",
           }}
         >
@@ -25,14 +24,8 @@ const Settings = () => {
           trackClassName={classes.track}
           value={timerState.focusTime}
           step={5}
-          onChange={(newValue) =>
-            dispatch(
-              timerActions.changeFocusTime({
-                focusTime: newValue,
-              })
-            )
-          }
-          min={5}
+          onChange={(newValue) => dispatch(changeFocusTime(newValue))}
+          min={0}
           max={180}
         />
         <label>Break time: {timerState.breakTime}:00</label>
@@ -41,13 +34,7 @@ const Settings = () => {
           thumbClassName={classes.sliderGreenThumb}
           trackClassName={classes.track}
           value={timerState.breakTime}
-          onChange={(newValue) =>
-            dispatch(
-              timerActions.changeBreakTime({
-                breakTime: newValue,
-              })
-            )
-          }
+          onChange={(newValue) => dispatch(changeBreakTime(newValue))}
           min={1}
           max={30}
         />

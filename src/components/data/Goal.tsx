@@ -5,27 +5,19 @@ import {
   IconCircleCheckFilled,
   IconTargetArrow,
 } from "@tabler/icons-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
-import { goalActions } from "../../store/goal-slice";
+import { updateGoal } from "../../store/goal-slice";
 
 const Goal = () => {
   const dispatch = useAppDispatch();
   const goalState = useAppSelector((state) => state.goal.entity);
   const [inputValue, setInputValue] = useState<string>("1");
 
-  useEffect(() => {
-    if (!goalState.isCompleted) {
-      dispatch(
-        goalActions.setGoalCompleted({ ...goalState, isCompleted: true })
-      );
-    }
-  }, [dispatch, goalState]);
-
   const myGoalHandler = (event: React.FormEvent) => {
     event.preventDefault();
     dispatch(
-      goalActions.updateGoal({
+      updateGoal({
         ...goalState,
         isGoal: true,
         numOfIntervals: Number(inputValue),
@@ -37,7 +29,7 @@ const Goal = () => {
   const resetGoalHandler = (event: React.FormEvent) => {
     event.preventDefault();
     dispatch(
-      goalActions.updateGoal({
+      updateGoal({
         ...goalState,
         isGoal: false,
         isCompleted: false,

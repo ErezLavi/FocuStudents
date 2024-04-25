@@ -1,6 +1,7 @@
 import { timerActions } from "../../../store/timer-slice";
-import { goalActions } from "../../../store/goal-slice";
 import { coursesActions } from "../../../store/courses-slice";
+import {updateTimer} from "../../../store/timer-slice";
+import { updateGoal } from "../../../store/goal-slice";
 import timerAlarm from "../../../sound/switchModeAlarm.mp3";
 import { setInterval } from "worker-timers";
 import Goal from "../../../models/Goal";
@@ -28,8 +29,8 @@ export const startTimer = (
       })
     );
     if (chosenTask && timerState.timerMode === "focus") {
-      const chosenCourseId = chosenTask.courseId;
-      dispatch(coursesActions.incrementTimeCounter(chosenCourseId));
+      const currentCourseId = chosenTask.courseId;
+      dispatch(coursesActions.incrementTimeCounter(currentCourseId));
     }
   }, 1000);
 };
@@ -39,21 +40,23 @@ const switchMode = (dispatch: any, timerState: Timer, goalState: Goal) => {
   audio.play();
   if (
     timerState.timerMode === "focus" &&
-    goalState.numOfCompletedIntervals < goalState.numOfIntervals
+    goalState.numOfCompletedIntervals < goalState.numOfIntervals &&
+    goalState.isGoal
   ) {
-    dispatch(
-      goalActions.updateGoal({
-        ...goalState,
-        numOfCompletedIntervals: goalState.numOfCompletedIntervals + 1,
-      })
-    );
+    const updatedGoal = {
+      ...goalState,
+      numOfCompletedIntervals: goalState.numOfCompletedIntervals + 1,
+      isCompleted:
+        goalState.numOfCompletedIntervals + 1 === goalState.numOfIntervals,
+    };
+    dispatch(updateGoal(updatedGoal));
   }
 
   const nextMode = timerState.timerMode === "focus" ? "break" : "focus";
   const nextSeconds =
     (nextMode === "focus" ? timerState.focusTime : timerState.breakTime) * 60;
   dispatch(
-    timerActions.updateTimer({
+    updateTimer({
       ...timerState,
       timerMode: nextMode,
       secondsLeft: nextSeconds,

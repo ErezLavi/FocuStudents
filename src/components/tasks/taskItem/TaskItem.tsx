@@ -4,18 +4,12 @@ import Task from "../../../models/Task";
 import TaskEditForm from "./TaskEditForm";
 import TaskDisplay from "./TaskDisplay";
 import { useAppDispatch } from "../../../store/hooks";
-import { tasksActions } from "../../../store/tasks-slice";
+import { removeTask, editTask } from '../../../store/tasks-slice';
 
 const TaskItem = ({ task }: { task: Task }) => {
   const dispatch = useAppDispatch();
   const [isEdit, setIsEdit] = useState(false);
-  const [editedTask, setEditedTask] = useState({
-    id: task.id,
-    name: task.name,
-    description: task.description,
-    isCompleted: task.isCompleted,
-    date: task.date,
-  });
+  const [editedTask, setEditedTask] = useState(task);
   const [errorMessage, setErrorMessage] = useState("");
   const [editedTaskName, setEditedTaskName] = useState(editedTask.name);
   const [editedTaskDescription, setEditedTaskDescription] = useState(
@@ -36,14 +30,14 @@ const TaskItem = ({ task }: { task: Task }) => {
       description: editedTaskDescription,
       date: editedTaskDate
     };
-    dispatch(tasksActions.editTask(updatedTask));
+    dispatch(editTask(updatedTask));
     setEditedTask(updatedTask);
     setIsEdit(false);
   };
 
   const deleteTaskHandler = (event: React.FormEvent) => {
     event.preventDefault();
-    dispatch(tasksActions.removeTaskById(task.id));
+    dispatch(removeTask(task));
   };
 
   const checkBoxToggle = () => {
@@ -51,7 +45,7 @@ const TaskItem = ({ task }: { task: Task }) => {
       ...editedTask,
       isCompleted: !editedTask.isCompleted,
     };
-    dispatch(tasksActions.editTask(updatedTask));
+    dispatch(editTask(updatedTask));
     setEditedTask(updatedTask);
   };
 

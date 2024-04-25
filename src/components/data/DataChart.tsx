@@ -3,18 +3,18 @@ import { useState } from "react";
 import { PieChart } from "react-minimal-pie-chart";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { timerActions } from "../../store/timer-slice";
-import { coursesActions } from "../../store/courses-slice";
+import { resetTimeCounter } from "../../store/courses-slice";
 import { IconRefresh } from "@tabler/icons-react";
 
 const DataChart = () => {
   const [resetClicked, setResetClicked] = useState(false);
   const dispatch = useAppDispatch();
   const timerState = useAppSelector((state) => state.timer.entity);
-  const coursesArr = useAppSelector((state) => state.courses.courses);
+  const coursesState = useAppSelector((state) => state.courses.courses);
   const totalTime = !isNaN(timerState.totalTimeCounter)
     ? timerState.totalTimeCounter
     : 0;
-  const coursesData = coursesArr.map((course) => ({
+  const coursesData = coursesState.map((course) => ({
     value:
       totalTime !== 0
         ? Math.floor(
@@ -40,7 +40,7 @@ const DataChart = () => {
   const resetDataHandler = () => {
     setResetClicked(false);
     dispatch(timerActions.resetTotalCounter());
-    dispatch(coursesActions.resetTimeCounter());
+    dispatch(resetTimeCounter());
   };
 
   return (
@@ -54,7 +54,7 @@ const DataChart = () => {
           lineWidth={55}
         />
         <ul>
-          {coursesArr.map((course) => (
+          {coursesState.map((course) => (
             <li key={course.id}>
               <div style={{ backgroundColor: course.color }}></div>
               {course.name}

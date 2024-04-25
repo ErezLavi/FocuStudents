@@ -6,18 +6,14 @@ import CourseEditForm from "./CourseEditForm";
 import AddTaskBtn from "../../tasks/addTask/AddTaskBtn";
 import AddTaskForm from "../../tasks/addTask/AddTaskForm";
 import TaskList from "../../tasks/TaskList";
-import { useAppSelector, useAppDispatch } from "../../../store/hooks";
-import { coursesActions } from "../../../store/courses-slice";
-import { tasksActions } from "../../../store/tasks-slice";
 import { createSelector } from "@reduxjs/toolkit";
+import { useAppSelector, useAppDispatch } from "../../../store/hooks";
+import { removeTasksByCourseId } from "../../../store/tasks-slice";
+import { removeCourse, editCourse } from "../../../store/courses-slice";
 
 const CourseItem = ({ course }: { course: Course }) => {
   const dispatch = useAppDispatch();
-  const [editedCourse, setEditedCourse] = useState({
-    id: course.id,
-    name: course.name,
-    color: course.color,
-  });
+  const [editedCourse, setEditedCourse] = useState(course);
   const [errorMessage, setErrorMessage] = useState("");
   const [editedCourseName, setEditedCourseName] = useState(editedCourse.name);
   const [isEdit, setIsEdit] = useState(false);
@@ -46,15 +42,15 @@ const CourseItem = ({ course }: { course: Course }) => {
       ...editedCourse,
       name: editedCourseName,
     };
-    dispatch(coursesActions.editCourse(updatedCourse));
+    dispatch(editCourse(updatedCourse));
     setEditedCourse(updatedCourse);
     setIsEdit(false);
   };
 
   const deleteCourseHandler = (event: React.FormEvent) => {
     event.preventDefault();
-    dispatch(coursesActions.removeCourseById(course.id));
-    dispatch(tasksActions.removeTasksByCourseId(course.id));
+    dispatch(removeCourse(course));
+    dispatch(removeTasksByCourseId(course.id));
   };
 
   const getId = () => {
@@ -73,19 +69,19 @@ const CourseItem = ({ course }: { course: Course }) => {
         <CourseHeader course={course} onEditClick={() => setIsEdit(true)} />
       ) : (
         <CourseEditForm
-        course={course}
-        editedCourseName={editedCourseName}
-        errorMessage={errorMessage}
-        backgroundcolor={backgroundcolor}
-        onEditHandler={editCourseHandler}
-        onDeleteHandler={deleteCourseHandler}
-        onCancelEdit={() => {
-          setIsEdit(false);
-          setErrorMessage('');
-        }}
-        onNameChange={(e) => setEditedCourseName(e.target.value)}
-      />
-    )}
+          course={course}
+          editedCourseName={editedCourseName}
+          errorMessage={errorMessage}
+          backgroundcolor={backgroundcolor}
+          onEditHandler={editCourseHandler}
+          onDeleteHandler={deleteCourseHandler}
+          onCancelEdit={() => {
+            setIsEdit(false);
+            setErrorMessage("");
+          }}
+          onNameChange={(e) => setEditedCourseName(e.target.value)}
+        />
+      )}
       <div>
         <TaskList tasks={filteredTasks} />
         {!isClicked ? (

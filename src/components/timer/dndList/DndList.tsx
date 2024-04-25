@@ -6,6 +6,7 @@ import { useListState } from "@mantine/hooks";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useAppSelector, useAppDispatch } from "../../../store/hooks";
 import { tasksActions } from "../../../store/tasks-slice";
+import {editTasks} from "../../../store/tasks-slice";
 
 const DndList: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -51,7 +52,7 @@ const DndList: React.FC = () => {
               });
 
               handlers.setState(updatedTasks);
-              dispatch(tasksActions.editTasks(updatedTasks));
+              dispatch(editTasks(updatedTasks));
             }}
           >
             <div
@@ -91,7 +92,7 @@ const DndList: React.FC = () => {
                     : { ...task, isCompleted: task.isCompleted }
                 );
                 handlers.setState(updatedTasks);
-                dispatch(tasksActions.editTasks(updatedTasks));
+                dispatch(editTasks(updatedTasks));
               }}
             />
           </div>
@@ -102,7 +103,7 @@ const DndList: React.FC = () => {
 
   useEffect(() => {
     // Update tasks order in state when state changes
-    dispatch(tasksActions.editTasks(state));
+    dispatch(editTasks(state));
   }, [state, dispatch]);
 
   return (

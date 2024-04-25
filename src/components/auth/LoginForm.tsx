@@ -25,10 +25,9 @@ const LoginForm: React.FC = () => {
       if (isLogin) {
         await loginUser(email, password, dispatch, navigate);
       } else {
-        await signUpUser(email, password, tasks, courses, timer, goal);
+        await signUpUser(email, password, tasks, courses, timer, goal, navigate);
       }
     } catch (error) {
-      // Handle authentication errors here
       console.error("Authentication error: ", error);
     }
   };
