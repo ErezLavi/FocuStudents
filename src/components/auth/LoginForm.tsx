@@ -6,7 +6,6 @@ import { RootState } from "../../store";
 import { signUpUser, loginUser } from "./AuthUtils";
 import { useNavigate } from "react-router-dom";
 
-
 const LoginForm: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -18,21 +17,29 @@ const LoginForm: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLogin, setIsLogin] = useState(true);
+  const [error, setError] = useState<string>("");
 
   const handleAuth = async (event: React.FormEvent) => {
     event.preventDefault();
-    try {
-      if (isLogin) {
-        await loginUser(email, password, dispatch, navigate);
-      } else {
-        await signUpUser(email, password, tasks, courses, timer, goal, navigate);
-      }
-    } catch (error) {
-      console.error("Authentication error: ", error);
+    setError(""); // Clear any previous error messages
+    if (isLogin) {
+      await loginUser(email, password, dispatch, navigate, setError);
+    } else {
+      await signUpUser(
+        email,
+        password,
+        tasks,
+        courses,
+        timer,
+        goal,
+        navigate,
+        setError
+      );
     }
   };
 
   const switchAuthModeHandler = () => {
+    setError("");
     setIsLogin((prevState) => !prevState);
   };
 
@@ -61,6 +68,7 @@ const LoginForm: React.FC = () => {
           onChange={(event) => setPassword(event.target.value)}
         />
       </div>
+      <div className={classes.error}>{error && <label>{error}</label>}</div>
       <div>
         <button type="submit" className={classes.login}>
           {isLogin ? "Login" : "Sign Up"}

@@ -22,7 +22,7 @@ export const queryUserInFirestore = async () => {
       }
       return querySnapshot;
     } else {
-      console.log("No user logged in");
+      return;
     }
   } catch (error) {
     console.error("Error querying user in Firestore: ", error);
@@ -37,11 +37,12 @@ export async function signUpUser(
   courses: any,
   timer: any,
   goal: any,
-  navigate: any
+  navigate: any,
+  setError: (error: string) => void
 ) {
   try {
     await createUserWithEmailAndPassword(auth, email, password);
-    const userDocRef = await addDoc(collection(db, "users"), {
+    await addDoc(collection(db, "users"), {
       email: email,
       tasks: tasks,
       courses: courses,
@@ -50,10 +51,18 @@ export async function signUpUser(
     });
     // Navigate to the Tasks page
     navigate("/Tasks");
-    console.log("Document written with ID: ", userDocRef.id);
-  } catch (e) {
-    console.error("Error signing up user: ", e);
-    throw e; // Re-throw the error for handling in the component
+  } catch (error: any) {
+    console.log("Error signing up: ", error.code);
+
+    // Handle specific error cases
+    if (error.code == "auth/weak-password") {
+      setError("Password is min 6 characters. Please try again.");
+    }
+    if (error.code === "auth/email-already-exists") {
+      setError("Email already in use. Please try logging in.");
+    } else {
+      setError("An unexpected error occurred. Please try again.");
+    }
   }
 }
 
@@ -62,7 +71,8 @@ export async function loginUser(
   email: string,
   password: string,
   dispatch: any,
-  navigate: any
+  navigate: any,
+  setError: (error: string) => void
 ) {
   try {
     await signInWithEmailAndPassword(auth, email, password);
@@ -79,8 +89,14 @@ export async function loginUser(
 
     // Navigate to the Tasks page
     navigate("/Tasks");
-  } catch (e) {
-    console.error("Error logging in user: ", e);
-    throw e; // Re-throw the error for handling in the component
+  } catch (error: any) {
+    // Handle specific error cases
+    if (error.code === "auth/invalid-credential") {
+      setError(
+        "Invalid email or password. Please try again."
+      );
+    } else {
+      setError("An unexpected error occurred. Please try again.");
+    }
   }
 }

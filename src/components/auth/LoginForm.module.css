@@ -4,7 +4,7 @@
   align-items: center;
 }
 
-.form div section{
+.form div section {
   display: flex;
   flex-direction: column;
 }
@@ -25,7 +25,6 @@
   color: var(--text-color);
   font-size: 1.2rem;
   font-weight: 500;
-  margin-left: 0.3rem;
 }
 
 .control input {
@@ -46,7 +45,7 @@
 .login {
   color: var(--text-color);
   background-color: var(--items-color);
-  width: 7rem;
+  width: 10rem;
   height: 2.5rem;
   border: 2px solid var(--border-color);
   font-size: 1.3rem;
@@ -65,11 +64,18 @@
   text-decoration: underline;
   border: none;
   font-size: 1.1rem;
-  border-radius: 10px;
-  margin: 0.15rem;
+  border-radius: 0.1rem;
   cursor: pointer;
 }
 
 .register button:hover {
   transform: scale(1.05);
+}
+
+.error {
+  height: 1.5rem;
+  color: var(--focusSetting-color);
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
 }
