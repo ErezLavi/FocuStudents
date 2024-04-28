@@ -1,7 +1,7 @@
+import Course from "../models/Course";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { queryUserInFirestore } from "../components/auth/AuthUtils";
 import { updateDoc, arrayRemove, arrayUnion } from "firebase/firestore";
-import Course from "../models/Course";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialCourses: Course[] = [];

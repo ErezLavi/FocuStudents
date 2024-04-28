@@ -2,32 +2,28 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { IconUser } from "@tabler/icons-react";
 import { auth } from "./firebase";
+import { useAppSelector, useAppDispatch } from "../../store/hooks";
+import { authActions } from "../../store/auth-slice";
 
-interface AuthDetailsProps {
-  isLoggedIn: boolean;
-  setIsLoggedIn: (isLoggedIn: boolean) => void;
-}
-
-const AuthDetails: React.FC<AuthDetailsProps> = ({
-  isLoggedIn,
-  setIsLoggedIn,
-}) => {
+const AuthDetails: React.FC = () => {
+  const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn);
+  const dispatch = useAppDispatch();
   const [user, setUser] = useState<any>(null);
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
-        setIsLoggedIn(true);
+        dispatch(authActions.login());
       } else {
         setUser(null);
-        setIsLoggedIn(false);
+        dispatch(authActions.logout());
       }
     });
     return () => {
       listen();
     };
-  }, [setIsLoggedIn]);
+  }, [dispatch]);
 
   const userSignOut = () => {
     signOut(auth)

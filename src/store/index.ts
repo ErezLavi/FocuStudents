@@ -3,6 +3,7 @@ import { timerSlice } from "./timer-slice";
 import { coursesSlice } from "./courses-slice";
 import { tasksSlice } from "./tasks-slice";
 import { goalSlice } from "./goal-slice";
+import { authSlice } from "./auth-slice";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
@@ -23,6 +24,11 @@ const persistConfigGoal = {
   storage,
 };
 
+const persistConfigAuth = {
+  key: "auth",
+  storage,
+};
+
 const persistedTasks = persistReducer(persistConfigTasks, tasksSlice.reducer);
 const persistedCourses = persistReducer(
   persistConfigCourses,
@@ -30,13 +36,15 @@ const persistedCourses = persistReducer(
 );
 const persistedTimer = persistReducer(persistConfigTimer, timerSlice.reducer);
 const persistedGoal = persistReducer(persistConfigGoal, goalSlice.reducer);
+const persistedAuth = persistReducer(persistConfigAuth, authSlice.reducer);
 
 const store = configureStore({
   reducer: {
     tasks: persistedTasks,
     courses: persistedCourses,
     timer: persistedTimer,
-    goal: persistedGoal
+    goal: persistedGoal,
+    auth: persistedAuth,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

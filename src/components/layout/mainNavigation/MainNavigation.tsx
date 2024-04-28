@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import classes from "./MainNavigation.module.css";
 import { NavLink, useLocation } from "react-router-dom";
 import { Fade as Hamburger } from "hamburger-react";
+import { useAppSelector } from "../../../store/hooks";
 import {
   IconListCheck,
   IconAlarm,
@@ -15,8 +16,7 @@ const MainNavigation: React.FC = () => {
   const location = useLocation();
   const [activeId, setActiveId] = useState<number | undefined>(1);
   const [isOpen, setOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn);
   const toggleBurger = () => {
     setOpen((oldState) => !oldState);
   };
@@ -73,7 +73,7 @@ const MainNavigation: React.FC = () => {
       </section>
       <nav className={!isOpen ? `${classes.nav}` : `${classes.mobileNav}`}>
         <ul>{items}</ul>
-        <AuthDetails isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+        <AuthDetails />
       </nav>
     </header>
   );
