@@ -177,26 +177,6 @@ const tasksSlice = createSlice({
     editTasks(state, action: PayloadAction<Task[]>) {
       state.tasks = action.payload;
     },
-    setInitialChosen(state) {
-      if (
-        state.tasks.length > 0 &&
-        !state.tasks.some((task) => task.isChosen)
-      ) {
-        for (let i = 0; i < state.tasks.length; i++) {
-          const task = state.tasks[i];
-          if (!task.isChosen && !task.isCompleted) {
-            const updatedTasks = [...state.tasks];
-            updatedTasks[i] = { ...updatedTasks[i], isChosen: true };
-
-            return {
-              ...state,
-              tasks: updatedTasks,
-            };
-          }
-        }
-      }
-      return state;
-    },
     fetchTasks(state, action: PayloadAction<Task[]>) {
       state.tasks = action.payload;
     },

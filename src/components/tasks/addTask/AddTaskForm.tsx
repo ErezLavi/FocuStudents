@@ -25,7 +25,7 @@ const NewTaskForm: React.FC<{
       description: description,
       courseId: courseId,
       isCompleted: false,
-      isChosen: false,
+      isChosen: true,
       date: formatDate(selectedDate),
     };
   };

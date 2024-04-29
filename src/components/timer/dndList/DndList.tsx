@@ -87,7 +87,7 @@ const DndList: React.FC = () => {
                     ? {
                         ...task,
                         isCompleted: !task.isCompleted,
-                        isChosen: false,
+                        isChosen: !task.isChosen,
                       }
                     : { ...task, isCompleted: task.isCompleted }
                 );
