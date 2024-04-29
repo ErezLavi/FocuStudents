@@ -70,7 +70,7 @@
 }
 
 .clock {
-  font-size: 650%;
+  font-size: 6.5rem;
   font: bold;
   margin: 0.5rem;
 }
@@ -81,6 +81,9 @@
   }
   .startButtonStyle {
     margin-left: 2.5rem;
+  }
+  .clock {
+    font-size: 6rem;
   }
 }
 
