@@ -58,6 +58,10 @@
   align-items: center;
 }
 
+.login:active {
+  transform: scale(0.95);
+}
+
 .registerToggle button {
   font-weight: 600;
   background-color: var(--main-color);
