@@ -58,17 +58,18 @@
   align-items: center;
 }
 
-.register button {
+.registerToggle button {
   font-weight: 600;
   background-color: var(--main-color);
   text-decoration: underline;
   border: none;
   font-size: 1.1rem;
   border-radius: 0.1rem;
+  margin: 0.1rem;
   cursor: pointer;
 }
 
-.register button:hover {
+.registerToggle button:hover {
   transform: scale(1.05);
 }
 

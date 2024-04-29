@@ -82,7 +82,7 @@ const LoginForm: React.FC = () => {
           </button>
         )}
       </div>
-      <div className={classes.register}>
+      <div className={classes.registerToggle}>
         <label>
           {isLogin ? "Don't have an account yet? " : "Already have an account?"}
         </label>
