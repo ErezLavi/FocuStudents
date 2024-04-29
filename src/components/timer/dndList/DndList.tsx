@@ -5,7 +5,6 @@ import { Text } from "@mantine/core";
 import { useListState } from "@mantine/hooks";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useAppSelector, useAppDispatch } from "../../../store/hooks";
-import { tasksActions } from "../../../store/tasks-slice";
 import {editTasks} from "../../../store/tasks-slice";
 
 const DndList: React.FC = () => {
