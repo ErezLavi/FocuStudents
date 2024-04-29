@@ -26,13 +26,9 @@ const AuthDetails: React.FC = () => {
   }, [dispatch]);
 
   const userSignOut = () => {
-    signOut(auth)
-      .then(() => {
-        console.log("User signed out Successfully");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    signOut(auth).catch((error) => {
+      console.log(error);
+    });
   };
 
   return (

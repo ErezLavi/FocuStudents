@@ -49,6 +49,7 @@ export async function signUpUser(
       timer: timer,
       goal: goal,
     });
+
     // Navigate to the Tasks page
     navigate("/Tasks");
   } catch (error: any) {
@@ -92,9 +93,7 @@ export async function loginUser(
   } catch (error: any) {
     // Handle specific error cases
     if (error.code === "auth/invalid-credential") {
-      setError(
-        "Invalid email or password. Please try again."
-      );
+      setError("Invalid email or password. Please try again.");
     } else {
       setError("An unexpected error occurred. Please try again.");
     }

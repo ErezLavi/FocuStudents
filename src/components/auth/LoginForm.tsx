@@ -1,27 +1,30 @@
 import classes from "./LoginForm.module.css";
 import { IconMail, IconPassword } from "@tabler/icons-react";
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { RootState } from "../../store";
 import { signUpUser, loginUser } from "./AuthUtils";
 import { useNavigate } from "react-router-dom";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const LoginForm: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const tasks = useSelector((state: RootState) => state.tasks);
-  const courses = useSelector((state: RootState) => state.courses);
-  const timer = useSelector((state: RootState) => state.timer);
-  const goal = useSelector((state: RootState) => state.goal);
+  const tasks = useAppSelector((state: RootState) => state.tasks);
+  const courses = useAppSelector((state: RootState) => state.courses);
+  const timer = useAppSelector((state: RootState) => state.timer);
+  const goal = useAppSelector((state: RootState) => state.goal);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLogin, setIsLogin] = useState(true);
   const [error, setError] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleAuth = async (event: React.FormEvent) => {
     event.preventDefault();
     setError(""); // Clear any previous error messages
+    setIsLoading(true);
     if (isLogin) {
       await loginUser(email, password, dispatch, navigate, setError);
     } else {
@@ -36,6 +39,7 @@ const LoginForm: React.FC = () => {
         setError
       );
     }
+    setIsLoading(false);
   };
 
   const switchAuthModeHandler = () => {
@@ -70,9 +74,13 @@ const LoginForm: React.FC = () => {
       </div>
       <div className={classes.error}>{error && <label>{error}</label>}</div>
       <div>
-        <button type="submit" className={classes.login}>
-          {isLogin ? "Login" : "Sign Up"}
-        </button>
+        {isLoading ? (
+          <ClipLoader color={"#071952"} loading={isLoading} size={35} />
+        ) : (
+          <button type="submit" className={classes.login}>
+            {isLogin ? "Login" : "Sign Up"}
+          </button>
+        )}
       </div>
       <div className={classes.register}>
         <label>
