@@ -180,6 +180,22 @@ const tasksSlice = createSlice({
     fetchTasks(state, action: PayloadAction<Task[]>) {
       state.tasks = action.payload;
     },
+
+    chooseFirstTaskIfNoneChosen(state) {
+      const chosenTaskExists = state.tasks.some((task) => task.isChosen);
+      if (!chosenTaskExists) {
+        const firstUncompletedTask = state.tasks.find(
+          (task) => !task.isCompleted
+        );
+        if (firstUncompletedTask) {
+          if (firstUncompletedTask) {
+            // Reset the isChosen state for all tasks
+            state.tasks.forEach((task) => (task.isChosen = false));
+            firstUncompletedTask.isChosen = true;
+          }
+        }
+      }
+    },
   },
 });
 

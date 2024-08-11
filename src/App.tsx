@@ -1,4 +1,3 @@
-import "./App.css";
 import { Routes, Route, Navigate} from "react-router-dom";
 import TasksPage from "./pages/TasksPage";
 import TimerPage from "./pages/TimerPage";

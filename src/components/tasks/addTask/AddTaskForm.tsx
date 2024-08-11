@@ -1,6 +1,6 @@
 import classes from "./AddTaskForm.module.css";
 import React, { useState, useRef, useEffect } from "react";
-import { useAppDispatch } from "../../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { addTask } from "../../../store/tasks-slice";
 
 const NewTaskForm: React.FC<{
@@ -8,6 +8,7 @@ const NewTaskForm: React.FC<{
   getCurrentCourseId: () => string;
 }> = (props) => {
   const dispatch = useAppDispatch();
+  const tasksArr = useAppSelector((state) => state.tasks.tasks);
   const taskNameInputRef = useRef<HTMLInputElement>(null);
   const taskDescriptionInputRef = useRef<HTMLInputElement>(null);
   const taskDateInputRef = useRef<HTMLInputElement>(null);
@@ -25,7 +26,7 @@ const NewTaskForm: React.FC<{
       description: description,
       courseId: courseId,
       isCompleted: false,
-      isChosen: true,
+      isChosen: tasksArr.length === 0,
       date: formatDate(selectedDate),
     };
   };

@@ -5,7 +5,9 @@ import { Text } from "@mantine/core";
 import { useListState } from "@mantine/hooks";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useAppSelector, useAppDispatch } from "../../../store/hooks";
-import {editTasks} from "../../../store/tasks-slice";
+import {editTasks } from "../../../store/tasks-slice";
+import { tasksActions } from "../../../store/tasks-slice";
+import { s } from 'vite/dist/node/types.d-aGj9QkWt';
 
 const DndList: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -100,9 +102,12 @@ const DndList: React.FC = () => {
     </Draggable>
   ));
 
-  useEffect(() => {
+  useEffect(() => {    
     // Update tasks order in state when state changes
     dispatch(editTasks(state));
+    
+    // Ensure only the first uncompleted task is chosen if none are chosen
+    dispatch(tasksActions.chooseFirstTaskIfNoneChosen());
   }, [state, dispatch]);
 
   return (
