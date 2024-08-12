@@ -4,9 +4,9 @@ https://focustudents-todo.netlify.app
 React pomodoro-to-do web app made for students
 ![desktopImg](https://github.com/ErezLavi/FocuStudents/blob/master/focustudents%20media/Tasks%20page.png)
 ![mobiledndGif](https://github.com/ErezLavi/FocuStudents/blob/master/focustudents%20media/dndFocuStudents.gif)
-![dataImg](https://github.com/ErezLavi/FocuStudents/blob/master/focustudents%20media/Data-page.png)
 ![mobileSettings](https://github.com/ErezLavi/FocuStudents/blob/master/focustudents%20media/mobile-settings.png)
 ![mobileLogin](https://github.com/ErezLavi/FocuStudents/blob/master/focustudents%20media/mobile-login.png)
+![dataImg](https://github.com/ErezLavi/FocuStudents/blob/master/focustudents%20media/Data-page.png)
 ## Description
 
 Designed with students in mind, this feature-packed Pomodoro-to-do app seamlessly blends task management, focused study sessions, and customizable settings to elevate your productivity game.
