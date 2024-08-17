@@ -41,6 +41,7 @@ const DataChart = () => {
     setResetClicked(false);
     dispatch(timerActions.resetTotalCounter());
     dispatch(resetTimeCounter());
+    dispatch(updateTimer({ ...timerState, totalTimeCounter: 0 }));
   };
 
   return (
