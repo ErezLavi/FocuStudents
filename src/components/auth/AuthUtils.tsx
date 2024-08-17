@@ -87,7 +87,6 @@ export async function loginUser(
     dispatch(tasksActions.fetchTasks(data.tasks));
     dispatch(timerActions.fetchTimer(data.timer.entity));
     dispatch(goalActions.fetchGoal(data.goal.entity));
-
     // Navigate to the Tasks page
     navigate("/Tasks");
   } catch (error: any) {

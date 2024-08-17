@@ -100,11 +100,15 @@ export const resetTimeCounterInFirestore = async () => {
       ...course,
       timeCounter: 0,
     }));
-    await updateDoc(userDoc.ref, { courses: updatedCourses });
+    const updatedTimer = { ...userData.timer, totalTimeCounter: 0 };
+    await updateDoc(userDoc.ref, {
+      courses: updatedCourses,
+      timer: updatedTimer,
+    });
   } catch (error) {
     console.error("Error resetting time counter in Firestore: ", error);
   }
-}
+};
 
 // Async Thunks
 export const addCourse = createAsyncThunk(

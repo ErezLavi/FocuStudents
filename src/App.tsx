@@ -17,7 +17,7 @@ import { goalActions } from "./store/goal-slice";
 
 function App() {
   const dispatch = useDispatch();
-
+// ******************Some extra check needed here******************
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
@@ -42,6 +42,7 @@ function App() {
     // Cleanup subscription on unmount
     return () => unsubscribe();
   }, [dispatch]);
+
   return (
     <div>
       <Layout >

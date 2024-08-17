@@ -2,7 +2,7 @@ import classes from "./DataChart.module.css";
 import { useState } from "react";
 import { PieChart } from "react-minimal-pie-chart";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
-import { timerActions } from "../../store/timer-slice";
+import { timerActions, updateTimer } from "../../store/timer-slice";
 import { resetTimeCounter } from "../../store/courses-slice";
 import { IconRefresh } from "@tabler/icons-react";
 

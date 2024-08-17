@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, Middleware } from "@reduxjs/toolkit";
 import { timerSlice } from "./timer-slice";
 import { coursesSlice } from "./courses-slice";
 import { tasksSlice } from "./tasks-slice";
