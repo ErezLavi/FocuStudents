@@ -16,12 +16,12 @@ const DataChart = () => {
     : 0;
   const coursesData = coursesState.map((course) => ({
     value:
-      totalTime !== 0
+      totalTime > 0
         ? Math.floor(
             (100 * (!isNaN(course.timeCounter) ? course.timeCounter : 0)) /
               totalTime
           )
-        : 1,
+        : 0,
     color: course.color,
   }));
 
@@ -40,8 +40,8 @@ const DataChart = () => {
   const resetDataHandler = () => {
     setResetClicked(false);
     dispatch(timerActions.resetTotalCounter());
-    dispatch(resetTimeCounter());
     dispatch(updateTimer({ ...timerState, totalTimeCounter: 0 }));
+    dispatch(resetTimeCounter());
   };
 
   return (
@@ -59,7 +59,7 @@ const DataChart = () => {
             <li key={course.id}>
               <div style={{ backgroundColor: course.color }}></div>
               {course.name}
-              {" " +
+              {/* {" " +
                 (totalTime !== 0
                   ? (
                       (100 *
@@ -67,7 +67,7 @@ const DataChart = () => {
                       totalTime
                     ).toFixed(1)
                   : 0) +
-                "%"}
+                "%"} */}
             </li>
           ))}
         </ul>
