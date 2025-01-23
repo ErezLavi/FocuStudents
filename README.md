@@ -51,7 +51,7 @@ You can access the project here: https://focustudents-todo.netlify.app
 
 ### Run the App:
 
-` npm start`
+` npm run dev`
 
 ## Contributing:
 
