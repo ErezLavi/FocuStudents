@@ -100,10 +100,12 @@ export const resetTimeCounterInFirestore = async () => {
       ...course,
       timeCounter: 0,
     }));
-    const updatedTimer = { ...userData.timer, totalTimeCounter: 0 };
+    const updatedTimer = { ...userData.timer };
+    updatedTimer.entity.totalTimeCounter = 0;
     await updateDoc(userDoc.ref, {
       courses: updatedCourses,
       timer: updatedTimer,
+
     });
   } catch (error) {
     console.error("Error resetting time counter in Firestore: ", error);
